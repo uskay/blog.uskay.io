@@ -1,0 +1,36 @@
+{
+    "articles": [
+        {
+            "snippetFormat": "large",
+            "title": "🌏 Hello World!! Progressive Web-Blog!!",
+            "subtitle": "Web ComponentsでPWAなブログを作ってみた。",
+            "date": "2018年01月25日",
+            "imgsrc": "http://raredelights.com/wp-content/uploads/2013/06/Googles-Exquisite-Office-in-Tokyo-2.jpg",
+            "link": "/article/abc"
+        },
+        {
+            "snippetFormat": "large",
+            "title": "かきます",
+            "subtitle": "めんどくさがるなおれ",
+            "date": "1970年1月1日てか",
+            "imgsrc": "http://raredelights.com/wp-content/uploads/2013/06/Googles-Exquisite-Office-in-Tokyo-2.jpg",
+            "link": "/article/abcdefgh"
+        },
+        {
+            "snippetFormat": "large",
+            "title": "かかせてください",
+            "subtitle": "がんばれおれ",
+            "date": "1970年1月1日など",
+            "imgsrc": "",
+            "link": "/"
+        },
+        {
+            "snippetFormat": "large",
+            "title": "おねがいします",
+            "subtitle": "めげるなおれ",
+            "date": "1970年1月1日とか",
+            "imgsrc": "",
+            "link": "/"
+        }
+    ]
+}
