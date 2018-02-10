@@ -19,7 +19,7 @@ export class UskayFacebookShare extends UskaySocialShare {
 
     getLinkURL() {
         return `
-            https://www.facebook.com/sharer/sharer.php?display=popup&u=${this.url}&t=${encodeURI(this.title)} - ${encodeURI(this.text)}
+            https://www.facebook.com/sharer/sharer.php?display=popup&u=https://blog.uskay.io${this.url}&t=${encodeURI(this.title)} - ${encodeURI(this.text)}
         `;
 
     }

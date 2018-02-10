@@ -14,6 +14,7 @@ class TopTemplateBuilder {
                 <!DOCTYPE html>
                 <meta charset="UTF-8">
                 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <link href="/img/icon-16.png" rel="shortcut icon">
                 <meta name="theme-color" content="#2b546d">
                 <meta property="og:title" content="ウェブボウズ" />
                 <meta property="og:type" content="article" />
@@ -72,6 +73,7 @@ class TopTemplateBuilder {
                         }
                     }
                 </style>
+                <script defer src="https://www.googletagmanager.com/gtag/js?id=UA-63868653-2"></script>
                 <noscript>Suup Broski, you hate Javascript? Javascript is awesome🤘<</noscript>
                 <background></background>
                 <uskay-global-header></uskay-global-header>
@@ -92,6 +94,11 @@ class TopTemplateBuilder {
                         deferredPrompt = e;
                         return false;
                     });
+                    // GA
+                    window.dataLayer = window.dataLayer || [];
+                    function gtag(){dataLayer.push(arguments);}
+                    gtag('js', new Date());
+                    gtag('config', 'UA-63868653-2');
                 </script>
         `
     }

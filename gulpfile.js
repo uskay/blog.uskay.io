@@ -5,14 +5,46 @@ const imagemin = require('gulp-imagemin');
 const webpack = require("webpack");
 const webpackStream = require("webpack-stream");
 const webpackConfig = require("./webpack.config");
+const uglify = require('gulp-uglify-es').default;
+const through = require('through2');
+const path = require('path');
+const File = require('vinyl');
 const fs = require('fs');
+
+gulp.task("splitMd", function() {
+    return gulp.src("./public/md/raw/*.md")
+        .pipe(through.obj(function (file, enc, cb) {
+            const base = "./public/md/";
+            const name = path.basename(file.path);
+            const splitContents = file.contents.toString().split("====\n");
+            const createNewFile = (base, name, content) => {
+                var file = new File({
+                    base: base,
+                    path: path.join(base, name),
+                    contents: new Buffer(content)
+                });
+                this.push(file);
+            }
+            console.log(splitContents[1]);
+            createNewFile(base, `${name.match(/(.+)\.md/)[1]}.md`, `${splitContents[0]}====`);
+            createNewFile(base, `${name.match(/(.+)\.md/)[1]}-all.md`, splitContents[1]);
+            cb();
+        }))
+        .pipe(gulp.dest("./public/md/"));
+})
+
+gulp.task("uglify", function () {
+    return gulp.src("./public/src/uskayui/blog/*.js")
+        .pipe(uglify())
+        .pipe(gulp.dest("./public/src/uskayui/blog/min"));
+});
 
 gulp.task('webpack', () =>
     webpackStream(webpackConfig, webpack).pipe(gulp.dest("./public/src/uskayui/blog/bundle/"))
 );
 
 gulp.task('imgMin', () =>
-	gulp.src('./public/img/**/*', {base: './public/img/'})
+	gulp.src('./public/img/**/*.(jpg|png)', {base: './public/img/'})
 		.pipe(imagemin())
 		.pipe(gulp.dest('./public/img/'))
 );
@@ -120,4 +152,4 @@ gulp.task("metaTag", ()=>{
     });
 })
 
-gulp.task('default', ["webpack", "imgResize", "generateIcon", 'imgMin', "validPath", "versioning", "metaTag"]);
+gulp.task('default', ["webpack", "imgResize", "generateIcon", 'imgMin', "validPath", "versioning", "metaTag", "splitMd"]);

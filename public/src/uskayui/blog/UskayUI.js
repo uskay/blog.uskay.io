@@ -1,1 +1,31 @@
-export class UskayUI extends HTMLElement{render(e){const t=this.getStyle(e),n=this.getTemplate(e);n.then?n.then(e=>{this._render(t,e)}):this._render(t,n)}_render(e,t){const n=document.createElement("template");n.innerHTML=`<style>${e}</style>${t}`,window.ShadyCSS&&(ShadyCSS.prepareTemplate(n,this.getComponentName()),ShadyCSS.styleElement(this)),this.attachShadow({mode:"open"}).appendChild(document.importNode(n.content,!0)),this.addEvents&&this.addEvents()}};
+export class UskayUI extends HTMLElement {
+
+    render(data) {
+        return new Promise((resolve, reject) => {
+            const style = this.getStyle(data);
+            const template = this.getTemplate(data);
+            if(template.then) {
+                template.then(asyncTemplate => {
+                    this._render(style, asyncTemplate);
+                    resolve();
+                })
+            } else {
+                this._render(style, template);
+                resolve();
+            }
+        })
+    }
+
+    _render(style, template) {
+        const templateDOM = document.createElement("template");
+        templateDOM.innerHTML = `<style>${style}</style>${template}`;
+        if(window.ShadyCSS){
+            ShadyCSS.prepareTemplate(templateDOM, this.getComponentName());
+            ShadyCSS.styleElement(this);
+        }
+        let shadow = this.attachShadow({mode: "open"});
+        shadow.appendChild(document.importNode(templateDOM.content, true));
+        if(this.addEvents) this.addEvents();
+    }
+    
+}

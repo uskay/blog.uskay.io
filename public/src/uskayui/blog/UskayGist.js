@@ -7,14 +7,12 @@ export class UskayGist extends HTMLElement {
                 let scriptTag = document.createElement("script");
                 const CALLBACK_WINDOW_OBJ_NAME = "__GistJsonpCallback";
                 let getCallbackFnName = _ => {
-                    return "cb" + Date.now();
+                    return "cb" + gistId;
                 }
                 if(!window[CALLBACK_WINDOW_OBJ_NAME]){
                     window[CALLBACK_WINDOW_OBJ_NAME] = {};
                 }
-                window[CALLBACK_WINDOW_OBJ_NAME][getCallbackFnName()] = res => {
-                    resolve(res);
-                }
+                window[CALLBACK_WINDOW_OBJ_NAME][getCallbackFnName()] = res => resolve(res);
                 scriptTag.setAttribute("src", `https://gist.github.com/${gistId}.json?callback=${CALLBACK_WINDOW_OBJ_NAME}.${getCallbackFnName()}`);
                 scriptTag.setAttribute("defer", true);
                 shadow.appendChild(scriptTag);

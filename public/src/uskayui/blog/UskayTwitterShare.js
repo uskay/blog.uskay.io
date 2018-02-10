@@ -19,7 +19,7 @@ export class UskayTwitterShare extends UskaySocialShare {
 
     getLinkURL() {
         return `
-            https://twitter.com/intent/tweet?text=${encodeURI(this.title)} - ${encodeURI(this.text)}&url=${this.url}&via=uskay
+            https://twitter.com/intent/tweet?text=${encodeURI(this.title)} - ${encodeURI(this.text)}&url=https://blog.uskay.io${this.url}&via=uskay
         `;
 
     }

@@ -4,13 +4,13 @@
 export class MarkdownParser {
 
     constructor(md) {
-        this.md = md;
+        this.md = md.replace(/</g, "&lt;").replace(/>/g,"&gt;");
         this.previouseRow;
         this.Row = class Row {
             constructor(row, isOl, isUl, isBlock) {
                 this.row = row;
-                this.isOl = isOl;
-                this.isUl = isUl;
+                this.isOl = isOl === undefined ? false : isOl;
+                this.isUl = isUl === undefined ? false : isUl;
                 this.isBlock = isBlock;
             }
             getInnerHTML() {
@@ -64,9 +64,31 @@ export class MarkdownParser {
                 }
                 return this;
             }
+            parseH3() {
+                const regex = /^###\s(.+)/;
+                const replace = `<h3>$1</h3>`;
+                if(this.row.match(regex)) {
+                    this.isBlock = true;
+                    return this.createNewRow(regex, replace);
+                }
+                return this;
+            }
             parseHR() {
                 const regex = /^----$/;
                 const replace = `<hr>`;
+                if(this.row.match(regex)) {
+                    this.isBlock = true;
+                    return this.createNewRow(regex, replace);
+                }
+                return this;
+            }
+            parseShowMore() {
+                const regex = /^====$/;
+                const replace = `<div id="show-more">
+                                    <div style="text-align:center;margin-top:50px;">
+                                        Loading...
+                                    </div>
+                                </div>`;
                 if(this.row.match(regex)) {
                     this.isBlock = true;
                     return this.createNewRow(regex, replace);
@@ -92,7 +114,7 @@ export class MarkdownParser {
                 return this;
             }
             parseImg() {
-                const regex = /^!\[.+\]\((https?:\/\/.+)\s(\d+)x(\d+)\)$/;
+                const regex = /^!\[.+\]\((.+)\s(\d+)x(\d+)\)$/;
                 const replace = `<uskay-img data-src=$1 data-width=$2 data-height=$3></uskay-img>`;
                 if(this.row.match(regex)) {
                     this.isBlock = true;
@@ -105,16 +127,16 @@ export class MarkdownParser {
              * Inline elements
              */
             parseStrong() {
-                return this.createNewRow(/\*\*(.+)\*\*/g, `<b>$1</b>`);
+                return this.createNewRow(/\*\*(.+?)\*\*/g, `<b>$1</b>`);
             }
             parseEmphasis() {
-                return this.createNewRow(/\*(.+)\*/g, `<em>$1</em>`);
+                return this.createNewRow(/\*(.+?)\*/g, `<em>$1</em>`);
             }
             parseLink() {
-                return this.createNewRow(/\[(.+)\]\((https?:\/\/.+)\)/g, `<a href="$2" target="_blank">$1</a>`);
+                return this.createNewRow(/\[(.+?)\]\((https?:\/\/.+?)\)/g, `<a href="$2" target="_blank">$1</a>`);
             }
             parseCode() {
-                return this.createNewRow(/`(.+)`/g, `<code>$1</code>`);
+                return this.createNewRow(/`(.+?)`/g, `<code>$1</code>`);
             }
 
             /**
@@ -133,13 +155,13 @@ export class MarkdownParser {
                 } else if (this.row.match(regexUl)){
                     if(this.isUl === false) {
                         this.isUl = true;
-                        return this.createNewRow(regexUl, `<ol>${replace}`);        
+                        return this.createNewRow(regexUl, `<ul>${replace}`);        
                     } 
                     return this.createNewRow(regexUl, replace);        
                 } else {
                     if(this.isOl === true){
                         this.isOl = false;
-                        return this.createNewRow(/^/, `</ol>`);        
+                        return this.createNewRow(/^/, `</ul>`);        
                     } else if (this.isUl === true){
                         this.isUl = false;
                         return this.createNewRow(/^/, `</ul>`);        
@@ -176,7 +198,9 @@ export class MarkdownParser {
             .parseArticleFooter()
             .parseH1()
             .parseH2()
+            .parseH3()
             .parseHR()
+            .parseShowMore()
             .parseGist()
             .parseBlockQuote()
             .parseImg()

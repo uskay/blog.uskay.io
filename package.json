@@ -15,20 +15,22 @@
   "author": "Yusuke Utsunomiya",
   "license": "Apache 2.0",
   "devDependencies": {
+    "@babel/core": "^7.0.0-beta.38",
+    "@babel/preset-env": "^7.0.0-beta.38",
+    "babel-core": "^6.26.0",
+    "babel-loader": "^8.0.0-beta.0",
+    "babel-plugin-transform-custom-element-classes": "^0.1.0",
+    "babel-polyfill": "^6.26.0",
     "gulp": "^3.9.1",
     "gulp-image-resize": "^0.13.0",
     "gulp-imagemin": "^4.1.0",
     "gulp-rename": "^1.2.2",
     "gulp-uglify": "^3.0.0",
     "gulp-uglify-es": "^1.0.0",
+    "through2": "^2.0.3",
     "uglifyjs-webpack-plugin": "^1.1.8",
+    "vinyl": "^2.1.0",
     "webpack": "^3.10.0",
-    "webpack-stream": "^4.0.0",
-    "@babel/core": "^7.0.0-beta.38",
-    "@babel/preset-env": "^7.0.0-beta.38",
-    "babel-core": "^6.26.0",
-    "babel-loader": "^8.0.0-beta.0",
-    "babel-plugin-transform-custom-element-classes": "^0.1.0",
-    "babel-polyfill": "^6.26.0"
+    "webpack-stream": "^4.0.0"
   }
 }

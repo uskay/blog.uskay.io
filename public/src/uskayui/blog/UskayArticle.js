@@ -12,8 +12,23 @@ export class UskayArticle extends UskayUI {
     }
 
     connectedCallback() {
-        super.render();  
-
+        this.firstFetchEndpoint = `/md/${location.pathname.match(/^\/article\/([a-zA-Z0-9-]+)/)[1]}.md`;
+        this.secondFetchEndpoint = `/md/${location.pathname.match(/^\/article\/([a-zA-Z0-9-]+)/)[1]}-all.md`;
+        super.render().then(_=> {
+            if(!this.shadowRoot.querySelector(`#show-more`)) {
+                return;
+            }
+            this.isSecondFetchRequired = true;
+            if(window.requestIdleCallback) {
+                requestIdleCallback(_ => {
+                    this.hookIntersectionObserver();
+                    this.preloadSecondFetch();
+                })
+                return;
+            }
+            this.hookIntersectionObserver();
+            this.preloadSecondFetch();
+        });
     }
 
     getStyle() {
@@ -39,16 +54,24 @@ export class UskayArticle extends UskayUI {
                 padding-left: 15px;
                 margin-left: 10px;
             }
+            a:link { color: blue; }
+            a:visited { color: blue; }
+            a:hover { color: blue; }
+            a:active { color: blue; }
+            code {
+                background-color:#2b546d;
+                color: #FFF;
+            }
         `
     }
 
     getTemplate(data) {
-        return this.fetchMarkdown();
+        return this.firstFetch();
     }
  
-    fetchMarkdown() {
+    firstFetch() {
         return new Promise((resolve, reject) => {
-            fetch(`${location.origin}/md/${location.pathname.match(/^\/article\/([a-zA-Z0-9-]+)/)[1]}.md`, {credentials: "include"}).then(res => {
+            fetch(this.firstFetchEndpoint, {credentials: "include"}).then(res => {
                 res.text().then(
                     text => {
                         const markup = new MarkdownParser(text).getMarkUp();
@@ -59,6 +82,52 @@ export class UskayArticle extends UskayUI {
                  );
             })
         })
+    }
+
+    secondFetch() {
+        const showMoreDOM = this.shadowRoot.querySelector(`#show-more`);
+        if(showMoreDOM) {
+            fetch(this.secondFetchEndpoint, {credentials: "include"}).then(res => {
+                res.text().then(
+                    text => {
+                        const markup = new MarkdownParser(text).getMarkUp();
+                        this.shadowRoot.querySelector("#show-more").innerHTML = markup;
+                        document.body.appendChild(document.createElement("uskay-profile"));
+                        document.body.appendChild(document.createElement("uskay-global-footer"));
+                    }
+                );
+            })
+        }
+    }
+
+    hookIntersectionObserver() {
+        const callback = (entries, observer) => {
+            entries.forEach(e => {
+                if(e.isIntersecting) {
+                    if(e.target.id == "#show-more") {
+                        observer.unobserve(e.target);
+                    }
+                    if(this.isSecondFetchRequired){
+                        this.isSecondFetchRequired = false;
+                        this.secondFetch();
+                    }
+                }
+            })
+        }
+        const observer = new IntersectionObserver(callback);
+        observer.observe(this.shadowRoot.querySelector(`#show-more`));  
+    }
+
+    preloadSecondFetch() {
+        const createLinkPreload = (href, as, crossorigin) => {
+            const link = document.createElement("link");
+            link.rel = "preload";
+            link.href = href;
+            link.crossOrigin = crossorigin ? crossorigin : "";
+            link.as = as;
+            return link;
+        }
+        document.head.appendChild(createLinkPreload(this.secondFetchEndpoint, "fetch", "use-credentials"));
     }
 }
 customElements.define(COMPONENT_NAME, UskayArticle);

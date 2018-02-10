@@ -33,7 +33,7 @@ export class UskayGlobalHeader extends UskayUI {
                     float: left;
                     padding-right:30px;
                     font-size: 48px;
-                    font-family: 'Nico Moji', -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Segoe UI","Noto Sans Japanese","ヒラギノ角ゴ ProN W3", Meiryo, sans-serif;;
+                    font-family: 'Nico Moji', -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Segoe UI","Noto Sans Japanese","ヒラギノ角ゴ ProN W3", Meiryo, sans-serif;
                 }
                 .header-profile {
                     float:left;

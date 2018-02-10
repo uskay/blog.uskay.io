@@ -17,6 +17,7 @@ class ArticleTemplateBuilder {
         return `
                 <!DOCTYPE html>
                 <meta charset="UTF-8">
+                <link href="/img/icon-16.png" rel="shortcut icon">
                 <meta name="viewport" content="width=device-width, initial-scale=1.0">
                 <meta name="theme-color" content="#2b546d">
                 ${this.metaTag}
@@ -107,6 +108,7 @@ class ArticleTemplateBuilder {
                         }
                     }
                 </style>
+                <script defer src="https://www.googletagmanager.com/gtag/js?id=UA-63868653-2"></script>
                 <noscript>Suup Broski, you hate Javascript? Javascript is awesome🤘<</noscript>
                 <background></background>
                 <uskay-global-header></uskay-global-header>
@@ -135,8 +137,6 @@ class ArticleTemplateBuilder {
                     <div class="dummyLine"></div>
                 </div>
                 <uskay-article></uskay-article>
-                <uskay-profile></uskay-profile>
-                <uskay-global-footer></uskay-global-footer>
                 <script>
                     window.addEventListener("load", _ => {
                         if ('serviceWorker' in navigator) {
@@ -149,6 +149,11 @@ class ArticleTemplateBuilder {
                         deferredPrompt = e;
                         return false;
                     });
+                    // GA
+                    window.dataLayer = window.dataLayer || [];
+                    function gtag(){dataLayer.push(arguments);}
+                    gtag('js', new Date());
+                    gtag('config', 'UA-63868653-2');
                 </script>
         `
     }
