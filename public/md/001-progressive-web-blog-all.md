@@ -67,4 +67,4 @@ Lazy-Loadは古くから伝わる手法ですが、ウェブボウズでは画�
 
 今週も１週間お疲れ様でした🍺
 
-{"footer": {"title": "🌏 Hello World! Progressive Web-Blog!! その１", "text": "Web ComponentsでPWAなブログを作ってみた。[初回Loading編]", "url": "/article/001-progressive-web-blog"}}
+{"footer": {"title": "🌏 Hello World! Progressive Web-Blog!! #1", "text": "Web ComponentsでPWAなブログを作ってみた。[Loading編]", "url": "/article/001-progressive-web-blog"}}

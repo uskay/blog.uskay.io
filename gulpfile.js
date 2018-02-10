@@ -50,7 +50,7 @@ gulp.task('imgMin', () =>
 );
 
 gulp.task('imgResize', () => {
-    gulp.src('./public/img/article/*')
+    gulp.src('./public/img/article/*.(jpg|png)')
         .pipe(imageResize({
             width : 700,
             upscale : false
