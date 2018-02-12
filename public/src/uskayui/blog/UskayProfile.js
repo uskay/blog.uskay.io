@@ -68,6 +68,7 @@ export class UskayProfile extends UskayUI {
                     <li>Google Developers Korea | <a href="https://www.youtube.com/watch?v=o09oKq1K1Zs" target="_blank">Building beautiful, interactive AMP pages for e-commerce & beyond</a></li>
                     <li>Web Directors Forum | <a href="http://wdf.jp/report/report-wdf28.html" target="_blank">WDF Vol.28 モバイルUX向上のためのAMPとPWA</a></li>
                     <li>HTML5j Webプラットフォーム部 | <a href="https://codeiq.jp/magazine/2018/01/56804/" target="_blank">今からでも遅くない！Progressive Web Apps超入門！</a></li>
+                    <li>2/19予定 | Mercari Web / Frontend meetup #1 | <a href="https://mercari.connpass.com/event/77284/" target="_blank">Modern Webを作ろう / Progressive Web Apps と AMP</a></li>
                 </ul>
                 <h3>たまに記事も書いたりしてます</h3>
                 <hr>
