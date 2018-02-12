@@ -135,13 +135,13 @@ gulp.task("metaTag", ()=>{
                         <meta property="og:title" content="\$\{this.metaMap.get(path).title\}" />
                         <meta property="og:type" content="article" />
                         <meta property="og:url" content="\$\{path\}" />
-                        <meta property="og:image" content="\$\{this.metaMap.get(path).imgsrc\}" />
+                        <meta property="og:image" content="https://blog.uskay.io\$\{this.metaMap.get(path).imgsrc\}" />
                         <meta property="og:site_name" content="ウェブボウズ" />
                         <meta property="og:description" content="\$\{this.metaMap.get(path).subtitle\}" />
                         <meta property="fb:app_id" content="1786319984995103" />
-                        <meta name="twitter:card" content="summary" />
-                        <meta name="twitter:site" content="uskay" />
-                        <meta name="twitter:creator" content="uskay" />
+                        <meta name="twitter:card" content="summary_large_image" />
+                        <meta name="twitter:site" content="@uskay" />
+                        <meta name="twitter:creator" content="@uskay" />
                         \`
                 }
             }
