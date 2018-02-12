@@ -25,7 +25,7 @@
 
 ![image](/img/article/001-005.png 1031x647)
 
-恥ずかしながら**UskayUI**なるこのブログ専用のWeb Component群を作ってしまいました.. 後述しますが、記事自体はマークダウンで書けるようにつくっていて、`<uskay-article>`というコンポーネントがFirebase Hostingに置いてある`.md`ファイルを`fetch`してきて、フロントエンドでマークダウンをパース・レンダリングしていきます。つまり、**フロントエンドでJavascriptで動的にコンテンツを構築していくタイプのページとなりますし、それでも如何に初回表示でもパフォーマンスよく、各種Botにもフレンドリーにするかがポイントとなってきます。**
+恥ずかしながら**UskayUI**なるこのブログ専用のWeb Component群を作ってしまいました.. 後述しますが、記事自体はマークダウンで書けるようにつくっていて、`<uskay-article>`というコンポーネントがFirebase Hostingに置いてある`.md`ファイルを`fetch`してきて、フロントエンドでマークダウンをパース・レンダリングしていきます。つまり、**フロントエンドでJavascriptを駆使して動的にコンテンツを構築していくタイプのページとなりますし、それでも如何に初回表示でもパフォーマンスよく、各種Botにもフレンドリーにするかがポイントとなってきます。**
 
 ## Web Components イケてるよ！
 今回はなるべく3rd Partyフレームワークやライブラリは使わずに、**Webプラットフォームの素材をそのまま活かすことを意識しています。**ただ、そうはいっても最近のトレンドであるWebページ内の各要素郡（たとえばヘッダーとか）はコンポーネント化して一元管理したり再利用したりしたいものです。今でこそReactやVueJsなどコンポーネント指向な使いやすいライブラリが数多くありますが、古くはDojo toolkitで`declare`してみたり、jQueryのプラグインなんか使ってみたり、その歴史は決して短くありません。そういったコンポーネントをWeb標準で作るための仕様がWeb Componentsとなります。Web Componentsは[Custom Elements](https://developers.google.com/web/fundamentals/web-components/customelements)、[Shadow DOM](https://developers.google.com/web/fundamentals/web-components/shadowdom)、[HTML Templates](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/template)という各Web APIから成り立っており、例えば（ものすごいシンプルな例ですが）以下のように簡単にコンポーネントを作れます（R.I.P **HTML imports**...）。
@@ -62,7 +62,7 @@
 
 ![image](/img/article/001-008.png 807x350)
 
-ってな感じでPush/Renderの最適化する前と後を比較するとこんな感じです。分かりやすいようにNetworkとCPU Throttleをかけていますが、**後のほうがだんぜん気持ちいい気がします。**
+ってな感じでPush/Renderの最適化する前と後を比較するとこんな感じです。分かりやすいようにNetworkとCPU Throttleをかけていますが、**Afterのほうがだんぜん表示が気持ちいい...**
 
 ![image](/img/article/001-009.gif 524x316)
 ### Pre-cache
@@ -82,4 +82,4 @@ Lazy-Loadは古くから伝わる手法ですが、ウェブボウズでは画�
 
 **Happy Tuesday!!**😆
 
-{"footer": {"title": "🌏 Hello World! Progressive Web-Blog!!", "text": "Web ComponentsでPWAなブログを作ってみた。[Loading編]", "url": "/article/001-progressive-web-blog"}}
+{"footer": {"title": "🌏 Hello World! Progressive Web-Blog!!", "text": "Web ComponentsでPWAなブログを作ってみた。[Loading編]", "url": "/article/001-pwa-blog-loading"}}

@@ -19,7 +19,8 @@ module.exports = {
             "mobile_safari": "ios_safari",
             "edge": "edge"
     },
-    "CRAWLER_UA_REGEX": /bot|googlebot|facebookexternalhit/i,
+    //"CRAWLER_UA_REGEX": /bot|googlebot|facebookexternalhit/i,
+    "CRAWLER_UA_REGEX": /googlebot/i, // Since Rendertron is out of service, for Twitter/Facebook use non-rendered results
     "RENDERTRON_UA_REGEX": /HeadlessChrome/,
     "REQUIRED_SCRIPT_URL_REGEX": /\/src.+\.js/g,
     "REQUIRED_SCRIPT": {

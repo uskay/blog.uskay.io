@@ -43,7 +43,7 @@ gulp.task('webpack', () =>
 );
 
 gulp.task('imgMin', () =>
-	gulp.src('./public/img/**/*.{jpg,png}', {base: './public/img/'})
+	gulp.src('./public/img/**/*.png', {base: './public/img/'})
 		.pipe(imagemin())
 		.pipe(gulp.dest('./public/img/'))
 );
