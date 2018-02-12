@@ -1,7 +1,7 @@
 export class UskayGist extends HTMLElement {
     connectedCallback() {
-        let shadow = this.attachShadow({mode: "closed"});
-        let gistId = this.getAttribute("data-gistId");
+        const shadow = this.attachShadow({mode: "closed"});
+        const gistId = this.getAttribute("data-gistId");
         let getJsonp = gistId => {
             return new Promise((resolve, reject) => {
                 let scriptTag = document.createElement("script");
@@ -19,13 +19,15 @@ export class UskayGist extends HTMLElement {
             });
         }
         getJsonp(gistId).then(res => {
-            let link = document.createElement("link");
-            link.setAttribute("rel", "stylesheet");
-            link.setAttribute("href", res.stylesheet);
-            shadow.appendChild(link);
-            let div = document.createElement("div");
-            div.innerHTML = res.div;
-            shadow.appendChild(div);
+            fetch(res.stylesheet).then(css => {
+                css.text().then(textCSS => {
+                    shadow.innerHTML = `<style>${textCSS}</style>`
+                    const div = document.createElement("div");
+                    div.innerHTML = res.div.replace('class="gist"', 'class="gist" style="-webkit-text-size-adjust: 100%;"');
+                    shadow.appendChild(div);
+                })
+            })
+
         });
     }
 }

@@ -19,6 +19,10 @@ export class UskayArticle extends UskayUI {
                 return;
             }
             this.isSecondFetchRequired = true;
+            if(location.search.includes("renderall=true")){
+                this.secondFetch();
+                return;
+            }
             if(window.requestIdleCallback) {
                 requestIdleCallback(_ => {
                     this.hookIntersectionObserver();

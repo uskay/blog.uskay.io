@@ -57,11 +57,11 @@ export class UskayProfile extends UskayUI {
                 <uskay-img class="profile-img" data-src="/img/footerme.png" data-width="100" data-height="100"></uskay-img>          
                 <div style="font-size: 85%;">
                     宇都宮 佑亮（うつのみや　ゆうすけ）。Google シニア モバイル ソリューションズ コンサルタント。大学では政治学を専攻するも途中でWeb制作が楽しくなってしまい、卒業後日本IBMでアプリケーションエンジニアとしてエンタープライズシステム開発な世界に潜り込む。
-                    Java 1.4.2の亡霊に長らく囚われつつも、2012年ごろのHTML5ブームですっかりWebテクノロジー中毒になり、2015年よりGoogleに入社。今は日本およびAPACのProgressive Web AppsとAMPの布教活動に従事。
-                    実際はウェブ『ボウズ』ではなく『スキンヘッド』なのですが、怖い人ではないのでご質問・ご指摘等はTwitterまでお気軽にお問い合わせください。決して噛んだりしません。
+                    Java 1.4.2の亡霊に長らく囚われつつも、2012年ごろのHTML5ブームですっかりWebテクノロジー中毒になり、2015年よりGoogleに入社。今は日本およびAPACのProgressive Web AppsとAMPの布教活動をさせて頂いておりますが、ただただ毎日トレンドに追いつくのに必死こいてます。
+                    実際はウェブ『ボウズ』ではなく『スキンヘッド』なのですが、怖い人ではないのでご質問・ご指摘等はTwitterまでお気軽にお問い合わせください。
                     当サイトにおけるすべてのコンテンツは私の個人的見解によるものであり私の雇用者の意見を代弁するものではありません。
                 </div>
-                <h3>講演</h3>
+                <h3>恐れ多くも人前に立たせてもらったりしてます</h3>
                 <hr>
                 <ul>
                     <li>Google Developers Japan | <a href="https://www.youtube.com/watch?v=iVvQUOOhBuU" target="_blank">AMP最新情報: ECでも使える！インタラクティブなAMPの作り方</a></li>
@@ -69,7 +69,7 @@ export class UskayProfile extends UskayUI {
                     <li>Web Directors Forum | <a href="http://wdf.jp/report/report-wdf28.html" target="_blank">WDF Vol.28 モバイルUX向上のためのAMPとPWA</a></li>
                     <li>HTML5j Webプラットフォーム部 | <a href="https://codeiq.jp/magazine/2018/01/56804/" target="_blank">今からでも遅くない！Progressive Web Apps超入門！</a></li>
                 </ul>
-                <h3>執筆記事</h3>
+                <h3>たまに記事も書いたりしてます</h3>
                 <hr>
                 <ul>
                     <li>Think with Google Japan | <a href="https://apac.thinkwithgoogle.com/intl/ja_ALL/collections/optimize-to-mobile.html" target="_blank">モバイルに最適化されたユーザー体験</a></li>
@@ -79,7 +79,8 @@ export class UskayProfile extends UskayUI {
                 <h3>ソーシャル</h3>
                 <hr>
                 <ul>
-                    <li>Twitter | <a href="https://twitter.com/uskay">@uskay</a></li>
+                    <li>Twitter | <a href="https://twitter.com/uskay" target="_blank">@uskay</a></li>
+                    <li>Github | <a href="https://github.com/uskay/blog.uskay.io" target="_blank">このブログのソース</a></li>
                 </ul>
             </div>
         `;

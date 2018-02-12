@@ -25,7 +25,6 @@ gulp.task("splitMd", function() {
                 });
                 this.push(file);
             }
-            console.log(splitContents[1]);
             createNewFile(base, `${name.match(/(.+)\.md/)[1]}.md`, `${splitContents[0]}====`);
             createNewFile(base, `${name.match(/(.+)\.md/)[1]}-all.md`, splitContents[1]);
             cb();
@@ -44,13 +43,13 @@ gulp.task('webpack', () =>
 );
 
 gulp.task('imgMin', () =>
-	gulp.src('./public/img/**/*.(jpg|png)', {base: './public/img/'})
+	gulp.src('./public/img/**/*.{jpg,png}', {base: './public/img/'})
 		.pipe(imagemin())
 		.pipe(gulp.dest('./public/img/'))
 );
 
 gulp.task('imgResize', () => {
-    gulp.src('./public/img/article/*.(jpg|png)')
+    gulp.src('./public/img/article/*.{jpg,png}')
         .pipe(imageResize({
             width : 700,
             upscale : false
@@ -152,4 +151,13 @@ gulp.task("metaTag", ()=>{
     });
 })
 
-gulp.task('default', ["webpack", "imgResize", "generateIcon", 'imgMin', "validPath", "versioning", "metaTag", "splitMd"]);
+gulp.task('default', [
+    　　"webpack", 
+        "imgResize", 
+        "generateIcon", 
+        'imgMin', 
+        "validPath", 
+        "versioning", 
+        "metaTag", 
+        "splitMd"
+    ]);

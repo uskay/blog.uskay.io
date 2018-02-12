@@ -1,15 +1,15 @@
-{"header": {"title": "🌏 Hello World! Progressive Web-Blog!! #1", "subtitle": "Web ComponentsでPWAなブログを作ってみた。[Loading編]", "date": "2018年02月09日"}}
+{"header": {"title": "🌏 Hello World! Progressive Web-Blog!!", "subtitle": "Web ComponentsでPWAなブログを作ってみた。[Loading編]", "date": "2018年02月13日"}}
 **これで何度目の挑戦でしょうか。**記憶する限り、２年ぶり１０度目くらいのブログでございます。会社のパイセンの[@ymotongpoo](https://twitter.com/ymotongpoo)さんは１２年も[ご自身のブログ](http://ymotongpoo.hatenablog.com/)を継続されており、日々コンテンツとその作業に耐えうるだけの筋肉を増やし続けられているのを横目に、私はといえば過去に１年以上続いた書きものは日記も含めて一切なく、ブログはというと思い返してみれば2004年ごろのライブドアブログから始まり、辞めては乗り換え辞めては乗り換えを繰り返してきた挙句、最終的にはJekyllいじったあたりでさっぱり音信不通になったのが２年前。並びに、筋肉事情に関して申し上げると、最後にジムに行ったのも気づけば１年半が経っており、会員権が腐り始めている小太りクソ坊主になってしまいました。
 
-実は書きたいことはたくさんあるのですが、ブログを再開するとなるとプラットフォーム選びに小一年ほどかかるわけです。**「Mediumかっこいいなー」と思ってもすでに"uskay"というIDがとられていたりしてなかなか前に進みません。** なんて感じでまごついていたのですが、気づけば2018年に入っているじゃないですか。これには流石に自分の実行力なさに絶望を感じたこともあって、今までの怠惰を払拭すべく心機一転。今回は（一番めんどくさくもある）「ブログを自作」というのをしてみました。**ざっくり申し上げると、Progressive Web Appsなブログに仕立てております。**いま時点はひとまずベータ版的な扱いでローンチ優先のツギハギものですが、今回当該プラットフォームを開発するに過程で意識した点を以下に記載しますので、何かのご縁でこのページまで辿り着かれた奇特な皆様におかれましては、当記事を今後のウェブ開発のヒントとなって消化して頂けますと幸甚に存じます。
+実は書きたいことはたくさんあるのですが、ブログを再開するとなるとプラットフォーム選びに小一年ほどかかるわけです。**「Mediumかっこいいなー」と思ってもすでに"uskay"というIDがとられていたりしてなかなか前に進みません。** なんて感じでまごついていたのですが、気づけば2018年になっており、これには流石に自分の実行力なさに絶望を感じたこともあって、今までの怠惰を払拭すべく心機一転。今回は（一番めんどくさくもある）「ブログを自作」というのをしてみました。**ざっくり申し上げると、Progressive Web Appsなブログに仕立てております。**いま時点はひとまずベータ版的な扱いでローンチ優先のツギハギものですが、今回当該プラットフォームを開発するに過程で意識した点を以下に記載しますので、何かのご縁でこのページまで辿り着かれた皆様におかれましては、当記事を今後のウェブ開発のヒントとなって消化して頂けますと幸甚に存じます。
 
 といいつつ書きたいことを全部書くと相当ボリューミーになるかと思われますので、複数記事に分けさせて頂きます。初回はLoading編ということで**ページ表示スピードの最適化**について主に取り上げたいと思います。
 
-![image](/img/article/001-001.jpg 960x638)
+![image](/img/article/001-011.png 700x419)
 
 ====
 ## そもそもProgressive Web Appsって？
-[こちらにも記事にして頂いておりますが、](https://codeiq.jp/magazine/2018/01/56804/)Progressive Web AppsはPWAという略名で2015年後期ごろから流行っているWebフロントエンドのベスプラ集、かつそのベスプラをいい感じに適用したWebアプリの通称です。**「最近インスタがPWA化したよね」**的な用法で使われることが多いですが、念のためPWAのコンセプトを要約しますと、
+[こちら](https://codeiq.jp/magazine/2018/01/56804/)にも（ありがたいことに）記事にして頂いておりますが、Progressive Web AppsはPWAという略名で2015年後期ごろから流行っているWebフロントエンドのベスプラ集、かつそのベスプラをいい感じに適用したWebアプリの通称です。**「最近インスタがPWA化したよね」**的な語法で使われることが多いですが、念のためPWAのコンセプトを要約しますと、
 - **とにかくパフォーマンスのいいサイトにしましょう。**SPAでもSPAじゃなくても、どんなフレームワーク使っても使わなくても、もうなんでもいいです。なんでもいいから、表示が速くて画面遷移がスムーズなものにしてユーザーに好かれましょう。
 - 上記をチューニングしたら、今度は最近使えるようになってきた**イケてるWeb APIを積極的に使ってよりよい体験をユーザーに提供しましょう。**
 - イケてるWeb APIを使うと何ができるかというと、**Webアプリをホーム画面に追加できるようになったり、オフラインでも動作するようになったり、プッシュ通知ができるようになったり、**そんな今までWebでは実現できなかったアプリっぽいことができるので、やらない手はないでしょう？
@@ -18,7 +18,7 @@
 上記で言うところのイケてるWeb APIをより具体的に紹介すると、[ServiceWorker](https://developers.google.com/web/fundamentals/primers/service-workers/)、[WebAppManifest](https://developers.google.com/web/fundamentals/app-install-banners/)、[Push API/Notification API](https://developers.google.com/web/fundamentals/codelabs/push-notifications/)，[Payment Request API](https://developers.google.com/web/fundamentals/payments/)、[Credential Management API](https://developers.google.com/web/fundamentals/security/credential-management/?hl=en)がいわゆるビッグ５でスタメンとなります。とりわけ注目度が高い桜木花道は間違いなく**ServiceWorker**となりますので、こちらについては多くの方がどこかで聞き覚えがあるものと思います。
 
 ## ウェブボウズはどんな構成で作ったの？
-ところで申し遅れましたが、当該ブログ名は**「ウェブボウズ」**にしました。私はウェブが好きで、かつボウズ頭であることに由来しておりますが、気分がいいときはスキンヘッドにしておりますので「テクニカルハゲ」とどっちがいいかなと悩んでいたところ、妻からさすがに後者の案はひどいと諭され今に至ります。さて、「ウェブボウズ」はどのような技術スタックで成り立っているかというと、
+ところで申し遅れましたが、当ブログ名は**「ウェブボウズ」**にしました。私はウェブが好きで、かつボウズ頭であることに由来しておりますが、気分がいいときはスキンヘッドにしておりますので「テクニカルハゲ」とどっちがいいかなと悩んでいたところ、妻からさすがに後者の案はひどいと諭され今に至ります。さて、「ウェブボウズ」はどのような技術スタックで成り立っているかというと、
 - フロントのメインは**Vanilla Javascript (ES6) + Web Components**
 - バックエンドは**Firebase Hosting + Fireabase Cloud Functions**でサーバレス的なアレ
 で構成されています。ちょうど絵にすると以下のような感じです。
@@ -58,23 +58,28 @@
 
 ```gist 99a8aa097ad7309d59505e0efcd5f310```
 
-さらには、Web Componentsを**ES6 Modules**を使って読み込んでいるので、`<script type=module>`なJavascriptはすべてDeferされています。DeferしているのでJavascriptがRender BlockすることなくHTMLのパースが行えてお作法としてはハッピーなのですが、そもそもHTMLにコンテンツを何も用意しないと最初は背景だけが表示されて、その後徐々にCustom Elementsが描画されるといった、**レイアウトが動き回る残念な事象**が発生します。これではちょっと恥ずかしい。いくらなんでも無防備するぎる。健康診断でも少なくとも[エアリズム](http://www.uniqlo.com/jp/store/feature/uq/innert/men/)はつけておきたい。開発しながらそんな想いにかられましたので、**スケルトンHTMLを用意しました。**なんのことはない、HTMLにただインラインでダミーのヘッダーや記事を実装しているだけです。
+さらには、Web Componentsを**ES6 Modules**を使って読み込んでいるので、`<script type=module>`なJavascriptはすべてDeferされています。DeferしているのでJavascriptがRender BlockすることなくHTMLのパースが行えてお作法としてはハッピーなのですが、そもそもHTMLにコンテンツを何も用意しないと最初は背景だけが表示されて、その後徐々にCustom Elementsが描画されるといった、**レイアウトが動き回る残念な事象**が発生します。これではちょっと恥ずかしい。いくらなんでも無防備するぎるので、スケルトンHTMLを用意しました。なんのことはない、HTMLにただインラインでダミーのヘッダーや記事を実装しているだけです。
 
 ![image](/img/article/001-008.png 807x350)
 
-ってな感じでPush/Renderの最適化する前と後を比較するとこんな感じです。分かりやすいようにNetworkとCPU Throttleをかけていますが、**ね。後のほうがいいでしょ？**
+ってな感じでPush/Renderの最適化する前と後を比較するとこんな感じです。分かりやすいようにNetworkとCPU Throttleをかけていますが、**後のほうがだんぜん気持ちいい気がします。**
 
 ![image](/img/article/001-009.gif 524x316)
 ### Pre-cache
 次にPRPLパターン２番目のP。Pre-cacheですが、これは次に画面遷移するであろうページ（Route）のリソースを先読みしておこうね、というものです。待ってました、主役！**ServiceWorker**の登場です！ ...ただ、こちらについては別記事で紹介させて頂きます。
 ### Lazy-Load
-Lazy-Loadは古くから伝わる手法ですが、ウェブボウズでは画像を全て`<uskay-img>`というWeb ComponentにWrapしており、内部的に**Intersection Observer**を利用してスクロールに応じた画像のLazy-Loadを実現しています。またところどころ出てくるGistも非同期に差し込めるように`<uskay-gist>`なるものを使っています。こちらもまた別記事で。
+Lazy-Loadは古くから伝わる手法ですが、ウェブボウズでは画像を全て`<uskay-img>`というWeb ComponentにWrapしており、内部的に[Intersection Observer](https://developer.mozilla.org/ja/docs/Web/API/Intersection_Observer_API)を利用してスクロールに応じた画像のLazy-Loadを実現しています。また、ページ上部の描画を優先するために下部のテキストも`<uskay-article>`内でLazy-Loadしていますし、ところどころ出てくるGistも非同期にShadow DOMに差し込めるように`<uskay-gist>`なるものも作りました。こちらもまた別記事で。
 
 ## Lighthouseで測ってみた。
+**で結局どんなパフォーマンスなのよ、**ということで[Lighthouse](https://developers.google.com/web/tools/lighthouse/)で測ってみるとこんな感じです。ちなみにLighthouseはChromeのチームが開発していますPerformance Auditツールで、今やWebサイトの最適化度合いを測るツールの中ではデファクト化しているものです。ChromeのDeveloper Toolから簡単に使えますので、まだ試されたことが無い方は是非ともお試しください。
+
+![image](/img/article/001-010.png 1434x1416)
+
+悔しくも、Peformance 99点の[阿部寛のサイト](http://abehiroshi.la.coocan.jp/)には負けますが、出だしとしては悪くない、といったところでしょうか。ちなみにLayoutするコンテンツ量も依存するJavascriptもそれなりにある当ブログにおいて、**Perfomanceを90点台後半まで伸ばすためには、これまたそれなりに頑張る必要がりました。**ただ試行錯誤を繰り返しながら点数が徐々に伸びていくのは見ていて気持ちがいいですし、その過程で使った当記事のTipsが皆様にほんの少しでもお役に立てることがあれば幸いでございます。
 
 ## まとめ
-以上が初回Loadingに特化した開発メモとなります。お見苦しい点も多々あったかと存じますが、今回紹介できなかった**ServiceWorker**や**WebAppManifest**を始め、その他Bot用には**Rendertron**を使っていたり、**Web Components Polyfill**を使ってIE11対応したり、**Web Share API**を利用したりしているので、またの機会に記事としてログらせて頂ければと思います。
+以上がLoadingに特化した開発メモとなります。お見苦しい点も多々あったかと存じますが、今回紹介できなかった**ServiceWorker**や**WebAppManifest**を始め、その他Bot用には**Rendertron**を使っていたり、**Web Components Polyfill**を使ってIE11対応したり、**Web Share API**を利用したりしているので、またの機会に記事としてログらせて頂ければと思います。
 
-今週も１週間お疲れ様でした🍺
+**Happy Tuesday!!**😆
 
-{"footer": {"title": "🌏 Hello World! Progressive Web-Blog!! #1", "text": "Web ComponentsでPWAなブログを作ってみた。[Loading編]", "url": "/article/001-progressive-web-blog"}}
+{"footer": {"title": "🌏 Hello World! Progressive Web-Blog!!", "text": "Web ComponentsでPWAなブログを作ってみた。[Loading編]", "url": "/article/001-progressive-web-blog"}}

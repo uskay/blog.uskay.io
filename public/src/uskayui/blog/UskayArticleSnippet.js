@@ -121,8 +121,12 @@ export class UskayArticleSnippet extends UskayUI {
     }
 
     addEvents() {
-        this.shadowRoot.addEventListener("click", () => {
+        const div = this.shadowRoot.querySelectorAll("div");
+        Array.to
+        Array.from(this.shadowRoot.querySelectorAll("div")).map(div => {
+            div.addEventListener("click", () => {
             location.href = this.dataLink;
+            });
         });
     }
 

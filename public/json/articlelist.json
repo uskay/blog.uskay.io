@@ -2,33 +2,33 @@
     "articles": [
         {
             "snippetFormat": "large",
-            "title": "🌏 Hello World! Progressive Web-Blog!! その１",
-            "subtitle": "Web ComponentsでPWAなブログを作ってみた。[初回Loading編]",
-            "date": "2018年02月09日",
-            "imgsrc": "http://raredelights.com/wp-content/uploads/2013/06/Googles-Exquisite-Office-in-Tokyo-2.jpg",
+            "title": "🌏 Hello World! Progressive Web-Blog!!",
+            "subtitle": "Web ComponentsでPWAなブログを作ってみた。[Loading編]",
+            "date": "2018年02月13日",
+            "imgsrc": "/img/article/001-011.png",
             "link": "/article/001-progressive-web-blog"
         },
         {
             "snippetFormat": "large",
-            "title": "かきます",
-            "subtitle": "めんどくさがるなおれ",
-            "date": "1970年1月1日てか",
+            "title": "書きます",
+            "subtitle": "書かせて下さい",
+            "date": "1970年1月1日",
             "imgsrc": "",
             "link": "/"
         },
         {
             "snippetFormat": "large",
-            "title": "かかせてください",
-            "subtitle": "がんばれおれ",
-            "date": "1970年1月1日など",
+            "title": "何か書きます",
+            "subtitle": "本当に書きたいんです",
+            "date": "1970年1月1日",
             "imgsrc": "",
             "link": "/"
         },
         {
             "snippetFormat": "large",
-            "title": "おねがいします",
-            "subtitle": "めげるなおれ",
-            "date": "1970年1月1日とか",
+            "title": "お願いします",
+            "subtitle": "気持ちだけはあるんです",
+            "date": "1970年1月1日",
             "imgsrc": "",
             "link": "/"
         }

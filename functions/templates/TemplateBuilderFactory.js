@@ -77,7 +77,7 @@ class TemplateBuilderFactory {
 
     getRendertronPromise() {
         return new Promise((resolve, reject) => {
-            fetch(`https://render-tron.appspot.com/render/https://blog-cfb61.firebaseapp.com${this.url}?wc-inject-shadydom=true`).then(res => {
+            fetch(`https://render-tron.appspot.com/render/https://blog-cfb61.firebaseapp.com${this.url}%3Frenderall=true?wc-inject-shadydom=true`).then(res => {
                 res.text().then(body => resolve(body));
             });
         });

@@ -3,7 +3,7 @@
             class MetaTagUtil {
                 constructor() {
                     this.metaMap = new Map();
-                    this.metaMap.set("/article/001-progressive-web-blog", {title:'🌏 Hello World! Progressive Web-Blog!! その１',subtitle:'Web ComponentsでPWAなブログを作ってみた。[初回Loading編]',imgsrc:'http://raredelights.com/wp-content/uploads/2013/06/Googles-Exquisite-Office-in-Tokyo-2.jpg'});this.metaMap.set("/", {title:'かきます',subtitle:'めんどくさがるなおれ',imgsrc:''});this.metaMap.set("/", {title:'かかせてください',subtitle:'がんばれおれ',imgsrc:''});this.metaMap.set("/", {title:'おねがいします',subtitle:'めげるなおれ',imgsrc:''});
+                    this.metaMap.set("/article/001-progressive-web-blog", {title:'🌏 Hello World! Progressive Web-Blog!!',subtitle:'Web ComponentsでPWAなブログを作ってみた。[Loading編]',imgsrc:'/img/article/001-011.jpg'});this.metaMap.set("/", {title:'書きます',subtitle:'書かせて下さい',imgsrc:''});this.metaMap.set("/", {title:'何か書きます',subtitle:'本当に書きたいんです',imgsrc:''});this.metaMap.set("/", {title:'お願いします',subtitle:'気持ちだけはあるんです',imgsrc:''});
                 }
                 
                 getMetaTag(path) {

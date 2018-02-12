@@ -107,8 +107,10 @@ export class UskayGlobalHeader extends UskayUI {
     }
 
     addEvents() {
-        this.shadowRoot.addEventListener("click", function(){
-            location.href = "/";
+        Array.from(this.shadowRoot.querySelectorAll("div")).map(div => {
+            div.addEventListener("click", () => {
+                location.href = "/";
+            });
         });
     }
 
