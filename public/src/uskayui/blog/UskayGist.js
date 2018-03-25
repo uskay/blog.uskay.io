@@ -18,17 +18,15 @@ export class UskayGist extends HTMLElement {
                 shadow.appendChild(scriptTag);
             });
         }
-        getJsonp(gistId).then(res => {
-            fetch(res.stylesheet).then(css => {
-                css.text().then(textCSS => {
-                    shadow.innerHTML = `<style>${textCSS}</style>`
-                    const div = document.createElement("div");
-                    div.innerHTML = res.div.replace('class="gist"', 'class="gist" style="-webkit-text-size-adjust: 100%;"');
-                    shadow.appendChild(div);
-                })
-            })
-
-        });
+        getJsonp(gistId)
+            .then(res => fetch(res.stylesheet))
+            .then(css => css.text())
+            .then(textCSS => {
+                shadow.innerHTML = `<style>${textCSS}</style>`
+                const div = document.createElement("div");
+                div.innerHTML = res.div.replace('class="gist"', 'class="gist" style="-webkit-text-size-adjust: 100%;"');
+                shadow.appendChild(div);
+            });
     }
 }
 customElements.define('uskay-gist', UskayGist);

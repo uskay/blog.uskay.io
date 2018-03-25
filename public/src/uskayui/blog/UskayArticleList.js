@@ -48,37 +48,33 @@ export class UskayArticleList extends UskayUI {
     }
 
     fetchArticleList() {
-        return new Promise((resolve, reject) => {
-            fetch("/json/articlelist.json", {credentials: "include"}).then(res => {
-                res.json().then(
-                    json => {
-                        const articleSnippetArray = [];
-                        json.articles.forEach(article => {
-                                const template = `<uskay-article-snippet 
-                                                    data-snippet-format="${article.snippetFormat}" 
-                                                    data-title="${article.title}" 
-                                                    data-subtitle="${article.subtitle}" 
-                                                    data-date="${article.date}" 
-                                                    data-link="${article.link}" 
-                                                    data-imgsrc="${article.imgsrc}">
-                                                </uskay-article-snippet>`;
-                                articleSnippetArray.push(template);           
-                            }
-                        )
-                        const dummy = document.querySelector("#dummyBody")
-                        if(dummy) dummy.style.display = "none";
-                        resolve(`
-                            <div class="wrapper">
-                                <h2>ブログ記事。はたして継続できるんでしょうか🙀</h2>
-                                <div class="list">
-                                    ${articleSnippetArray.join("")}
-                                </div>
-                            </div>
-                            `);     
+        return fetch("/json/articlelist.json", {credentials: "include"})
+            .then(res => res.json())
+            .then(json => {
+                const articleSnippetArray = [];
+                json.articles.forEach(article => {
+                        const template = `<uskay-article-snippet 
+                                            data-snippet-format="${article.snippetFormat}" 
+                                            data-title="${article.title}" 
+                                            data-subtitle="${article.subtitle}" 
+                                            data-date="${article.date}" 
+                                            data-link="${article.link}" 
+                                            data-imgsrc="${article.imgsrc}">
+                                        </uskay-article-snippet>`;
+                        articleSnippetArray.push(template);           
                     }
-                );
+                )
+                const dummy = document.querySelector("#dummyBody")
+                if(dummy) dummy.style.display = "none";
+                return (`
+                    <div class="wrapper">
+                        <h2>ブログ記事。はたして継続できるんでしょうか🙀</h2>
+                        <div class="list">
+                            ${articleSnippetArray.join("")}
+                        </div>
+                    </div>
+                `);
             });
-        })
     }
 }
 customElements.define(COMPONENT_NAME, UskayArticleList);

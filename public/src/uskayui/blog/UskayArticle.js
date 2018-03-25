@@ -74,33 +74,27 @@ export class UskayArticle extends UskayUI {
     }
  
     firstFetch() {
-        return new Promise((resolve, reject) => {
-            fetch(this.firstFetchEndpoint, {credentials: "include"}).then(res => {
-                res.text().then(
-                    text => {
-                        const markup = new MarkdownParser(text).getMarkUp();
-                        const dummy = document.querySelector("#dummyArticle")
-                        if(dummy) dummy.style.display = "none";
-                        resolve(markup);
-                    }
-                 );
-            })
-        })
+        return fetch(this.firstFetchEndpoint, {credentials: "include"})
+            .then(res => res.text())
+            .then(text => {
+                const markup = new MarkdownParser(text).getMarkUp();
+                const dummy = document.querySelector("#dummyArticle")
+                if(dummy) dummy.style.display = "none";
+                return markup;
+            });
     }
 
     secondFetch() {
         const showMoreDOM = this.shadowRoot.querySelector(`#show-more`);
         if(showMoreDOM) {
-            fetch(this.secondFetchEndpoint, {credentials: "include"}).then(res => {
-                res.text().then(
-                    text => {
-                        const markup = new MarkdownParser(text).getMarkUp();
-                        this.shadowRoot.querySelector("#show-more").innerHTML = markup;
-                        document.body.appendChild(document.createElement("uskay-profile"));
-                        document.body.appendChild(document.createElement("uskay-global-footer"));
-                    }
-                );
-            })
+            fetch(this.secondFetchEndpoint, {credentials: "include"})
+                .then(res => res.text())
+                .then(text => {
+                    const markup = new MarkdownParser(text).getMarkUp();
+                    this.shadowRoot.querySelector("#show-more").innerHTML = markup;
+                    document.body.appendChild(document.createElement("uskay-profile"));
+                    document.body.appendChild(document.createElement("uskay-global-footer"));
+                });
         }
     }
 
