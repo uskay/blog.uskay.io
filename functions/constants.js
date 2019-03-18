@@ -73,6 +73,7 @@ module.exports = {
                 <link rel="preload" href="/src/uskayui/blog/UskayFacebookShare.js" as="script" crossorigin>
                 <link rel="preload" href="/src/uskayui/blog/UskayWebShare.js" as="script" crossorigin>
                 <link rel="preload" href="/src/uskayui/blog/UskaySocialShare.js" as="script" crossorigin>
+                <link rel="preload" href="/src/uskayui/blog/UskayYouTube.js" as="script" crossorigin>
                 <script type="module" src="/src/uskayui/blog/UskayGlobalHeader.js" crossorigin></script>
                 <script type="module" src="/src/uskayui/blog/UskayArticle.js" crossorigin></script>
                 <script type="module" src="/src/uskayui/blog/UskayProfile.js" crossorigin></script>

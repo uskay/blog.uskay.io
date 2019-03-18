@@ -16,6 +16,7 @@ gulp.task("splitMd", function() {
         .pipe(through.obj(function (file, enc, cb) {
             const base = "./public/md/";
             const name = path.basename(file.path);
+            console.log(name);
             const splitContents = file.contents.toString().split("====\n");
             const createNewFile = (base, name, content) => {
                 var file = new File({

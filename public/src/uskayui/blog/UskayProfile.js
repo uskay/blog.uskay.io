@@ -58,24 +58,29 @@ export class UskayProfile extends UskayUI {
                 <div style="font-size: 85%;">
                     宇都宮 佑亮（うつのみや　ゆうすけ）。Google シニア モバイル ソリューションズ コンサルタント。大学では政治学を専攻するも途中でWeb制作が楽しくなってしまい、卒業後日本IBMでアプリケーションエンジニアとしてエンタープライズシステム開発な世界に潜り込む。
                     Java 1.4.2の亡霊に長らく囚われつつも、2012年ごろのHTML5ブームですっかりWebテクノロジー中毒になり、2015年よりGoogleに入社。今は日本およびAPACのProgressive Web AppsとAMPの布教活動をさせて頂いておりますが、ただただ毎日トレンドに追いつくのに必死こいてます。
-                    実際はウェブ『ボウズ』ではなく『スキンヘッド』なのですが、怖い人ではないのでご質問・ご指摘等はTwitterまでお気軽にお問い合わせください。
+                    <span style="text-decoration:line-through">実際はウェブ『ボウズ』ではなく『スキンヘッド』なのですが、怖い人ではないのでご質問・ご指摘等はTwitterまでお気軽にお問い合わせください。</span> 2019年より髪の毛を生やし始めましたのでもはやボウズではありません.. ご容赦ください。
                     当サイトにおけるすべてのコンテンツは私の個人的見解によるものであり私の雇用者の意見を代弁するものではありません。
                 </div>
                 <h3>恐れ多くも人前に立たせてもらったりしてます</h3>
                 <hr>
                 <ul>
+                    <li>AMP Conf 2019 | <a href="https://www.ampproject.org/amp-conf/" target="_blank">Opening & Moderation</a></li>
+                    <li>HTML5 Conference 2018 | <a href="https://twitter.com/uskay/status/1066579287090749440" target="_blank">「それ、AMPで作りませんか？」--- RichでResponsiveかつ**PWA**なAMPの作り方</a></li>
+                    <li>AppsJapan 2018 | <a href="https://reg.f2ff.jp/public/session/view/6593" target="_blank">Progressive Web Apps: Web UXの新たな基準を考える</a></li>
+                    <li>HTML5j Webプラットフォーム部 | <a href="https://next.rikunabi.com/journal/20160131_t21_iq/" target="_blank">今からでも遅くない！Progressive Web Apps超入門！</a></li>
                     <li>Google Developers Japan | <a href="https://www.youtube.com/watch?v=iVvQUOOhBuU" target="_blank">AMP最新情報: ECでも使える！インタラクティブなAMPの作り方</a></li>
                     <li>Google Developers Korea | <a href="https://www.youtube.com/watch?v=o09oKq1K1Zs" target="_blank">Building beautiful, interactive AMP pages for e-commerce & beyond</a></li>
-                    <li>Web Directors Forum | <a href="http://wdf.jp/report/report-wdf28.html" target="_blank">WDF Vol.28 モバイルUX向上のためのAMPとPWA</a></li>
-                    <li>HTML5j Webプラットフォーム部 | <a href="https://codeiq.jp/magazine/2018/01/56804/" target="_blank">今からでも遅くない！Progressive Web Apps超入門！</a></li>
-                    <li>2/19予定 | Mercari Web / Frontend meetup #1 | <a href="https://mercari.connpass.com/event/77284/" target="_blank">Modern Webを作ろう / Progressive Web Apps と AMP</a></li>
+                    <li>など..</li>
                 </ul>
                 <h3>たまに記事も書いたりしてます</h3>
                 <hr>
                 <ul>
+                    <li>AMPHTML Blog | <a href="https://amphtml.wordpress.com/2018/11/20/progressively-amplify-ec-cube/" target="_blank">Progressively AMPlify EC-CUBE</a></li>
+                    <li>HTML5 Experts.jp | <a href="https://html5experts.jp/uskay/25391/" target="_blank">「改めまして、Progressive Web Appsと申します」── Web UXの新たな基準を考える</a></li>
                     <li>Think with Google Japan | <a href="https://apac.thinkwithgoogle.com/intl/ja_ALL/collections/optimize-to-mobile.html" target="_blank">モバイルに最適化されたユーザー体験</a></li>
                     <li>Think with Google APAC | <a href="https://apac.thinkwithgoogle.com/intl/en/case-studies/japanese-retailer-belluna-mobile-experience-leads-impressive-sales-lift.html" target="_blank">Japanese Retailer’s Smoother Mobile Experience Leads To Impressive Sales Lift</a></li>
                     <li>AdWords Blog | <a href="https://www.ja.advertisercommunity.com/t5/%E3%83%96%E3%83%AD%E3%82%B0%E8%A8%98%E4%BA%8B/Google-%E3%81%8C%E6%B3%A8%E5%8A%9B%E3%81%99%E3%82%8BAMP-%E3%81%A8-PWA-%E3%81%AE%E6%8E%A1%E7%94%A8%E3%81%A7%E3%83%A2%E3%83%90%E3%82%A4%E3%83%AB%E3%82%B3%E3%83%B3%E3%83%90%E3%83%BC%E3%82%B8%E3%83%A7%E3%83%B3%E3%82%92%E3%81%95%E3%82%89%E3%81%AB%E5%8A%A0%E9%80%9F%E3%81%95%E3%81%9B%E3%81%9F%E3%83%99%E3%83%AB%E3%83%BC%E3%83%8A%E3%81%AE%E4%BA%8B%E4%BE%8B/ba-p/45989#" target="_blank">AMP と PWA の採用でモバイルコンバージョンをさらに加速させたベルーナの事例</a></li>
+                    <li>など..</li>
                 </ul>
                 <h3>ソーシャル</h3>
                 <hr>

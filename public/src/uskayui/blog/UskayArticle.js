@@ -1,4 +1,5 @@
 import {MarkdownParser} from "./MarkdownParser.js";
+import {UskayYouTube} from "./UskayYouTube.js";
 import {UskayGist} from "./UskayGist.js";
 import {UskayArticleHeader} from "./UskayArticleHeader.js";
 import {UskayArticleFooter} from "./UskayArticleFooter.js";

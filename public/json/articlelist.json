@@ -2,19 +2,19 @@
     "articles": [
         {
             "snippetFormat": "large",
+            "title": "話題の Portals を使った画面遷移UXの未来",
+            "subtitle": "ページロードだけでなく滑らかなページ ナビゲーションも積極的に取り組みたい 2019 年",
+            "date": "2019年03月19日",
+            "imgsrc": "/img/article/002-001.png",
+            "link": "/article/002-hands-on-portals"
+        },
+        {
+            "snippetFormat": "large",
             "title": "🌏 Hello World! Progressive Web-Blog!!",
             "subtitle": "Web ComponentsでPWAなブログを作ってみた。[Loading編]",
             "date": "2018年02月13日",
             "imgsrc": "/img/article/001-012.png",
             "link": "/article/001-pwa-blog-loading"
-        },
-        {
-            "snippetFormat": "large",
-            "title": "書きます",
-            "subtitle": "書かせて下さい",
-            "date": "1970年1月1日",
-            "imgsrc": "",
-            "link": "/"
         },
         {
             "snippetFormat": "large",

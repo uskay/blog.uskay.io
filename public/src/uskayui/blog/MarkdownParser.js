@@ -115,10 +115,14 @@ export class MarkdownParser {
             }
             parseImg() {
                 const regex = /^!\[.+\]\((.+)\s(\d+)x(\d+)\)$/;
-                const replace = `<uskay-img data-src=$1 data-width=$2 data-height=$3></uskay-img>`;
+                const replaceImg = `<uskay-img data-src=$1 data-width=$2 data-height=$3></uskay-img>`;
+                const replaceYouTube = `<uskay-youtube data-src=$1 data-width=$2 data-height=$3></uskay-youtube>`;
                 if(this.row.match(regex)) {
                     this.isBlock = true;
-                    return this.createNewRow(regex, replace);
+                    if (this.row.match(regex)[0].includes("https://www.youtube.com/embed/")){
+                        return this.createNewRow(regex, replaceYouTube);
+                    }
+                    return this.createNewRow(regex, replaceImg);
                 }
                 return this;
             }
