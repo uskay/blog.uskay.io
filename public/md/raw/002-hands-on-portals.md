@@ -71,6 +71,7 @@ iframe では別ページを表示するところまではできました。さ�
 ただ、まだアーリーなフィーチャーなので、現時点では当然完璧ではありません :
 - `activate` すると session history が全部なくなってしまったり（元のページに戻れない！）
 - `postMessage` によるやり取りがまだできなかったり（Portal のレンダリングが終わったことの通知してから画面上に表示させたい！）
+- `adoptPredecessor` などまだ実装されてない機能があったり（もっとクリエイティブな使い方をしたい！）
 - DevTools とのサポートがまだまだだったり（Portals 内のログが Console で見づらい）
 など。[こちら](https://bugs.chromium.org/p/chromium/issues/list?q=component:Blink%3EHTML%3EPortal)を見るとそれぞれの対応状況がわかります。
 
