@@ -1,6 +1,12 @@
 import {UskayUI} from "./UskayUI.js";
 
+const COMPONENT_NAME = "uskay-youtube"; 
 export class UskayYouTube extends UskayUI {
+
+    getComponentName() {
+        return COMPONENT_NAME;
+    }
+
     connectedCallback() {
         const data = {
             src: this.getAttribute("data-src"),
@@ -46,4 +52,4 @@ export class UskayYouTube extends UskayUI {
     }
 
 }
-customElements.define('uskay-youtube', UskayYouTube);
+customElements.define(COMPONENT_NAME, UskayYouTube);
