@@ -2,6 +2,14 @@
     "articles": [
         {
             "snippetFormat": "large",
+            "title": "4年間必死だった話とか、キャリアとか、採用とか",
+            "subtitle": "特に技術的な話はなく、今年何やったかと「これから」について少し",
+            "date": "2019年11月19日",
+            "imgsrc": "/img/article/003-001.png",
+            "link": "/article/003-career-and-hiring"
+        },
+        {
+            "snippetFormat": "large",
             "title": "話題の Portals を使った画面遷移UXの未来",
             "subtitle": "ページロードだけでなく滑らかなページ ナビゲーションも積極的に取り組みたい 2019 年",
             "date": "2019年03月19日",
@@ -20,14 +28,6 @@
             "snippetFormat": "large",
             "title": "何か書きます",
             "subtitle": "本当に書きたいんです",
-            "date": "1970年1月1日",
-            "imgsrc": "",
-            "link": "/"
-        },
-        {
-            "snippetFormat": "large",
-            "title": "お願いします",
-            "subtitle": "気持ちだけはあるんです",
             "date": "1970年1月1日",
             "imgsrc": "",
             "link": "/"

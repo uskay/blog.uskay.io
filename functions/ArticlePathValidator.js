@@ -3,7 +3,7 @@
             class ArticlePathValidator {
                 constructor(path){
                     this.urlSet = new Set();
-                    this.urlSet.add("/article/002-hands-on-portals"); this.urlSet.add("/article/001-pwa-blog-loading"); this.urlSet.add("/");
+                    this.urlSet.add("/article/003-career-and-hiring"); this.urlSet.add("/article/002-hands-on-portals"); this.urlSet.add("/article/001-pwa-blog-loading"); this.urlSet.add("/");
                     this.path = path;
                 }
                 isValid() {

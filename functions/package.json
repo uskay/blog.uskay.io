@@ -9,8 +9,8 @@
     "logs": "firebase functions:log"
   },
   "dependencies": {
-    "firebase-admin": "^7.1.0",
-    "firebase-functions": "^2.2.0",
+    "firebase-admin": "^8.7.0",
+    "firebase-functions": "^3.3.0",
     "node-fetch": "^2.0.0",
     "useragent": "^2.3.0"
   },

@@ -56,7 +56,7 @@ export class UskayProfile extends UskayUI {
                 <h2><code>$whoami</code></h2>
                 <uskay-img class="profile-img" data-src="/img/footerme.png" data-width="100" data-height="100"></uskay-img>          
                 <div style="font-size: 85%;">
-                    宇都宮 佑亮（うつのみや　ゆうすけ）。Google シニア モバイル ソリューションズ コンサルタント。大学では政治学を専攻するも途中でWeb制作が楽しくなってしまい、卒業後日本IBMでアプリケーションエンジニアとしてエンタープライズシステム開発な世界に潜り込む。
+                    宇都宮 佑亮（うつのみや　ゆうすけ）。Google スタッフ モバイル ソリューションズ コンサルタント。大学では政治学を専攻するも途中でWeb制作が楽しくなってしまい、卒業後日本IBMでアプリケーションエンジニアとしてエンタープライズシステム開発な世界に潜り込む。
                     Java 1.4.2の亡霊に長らく囚われつつも、2012年ごろのHTML5ブームですっかりWebテクノロジー中毒になり、2015年よりGoogleに入社。今は日本およびAPACのProgressive Web AppsとAMPの布教活動をさせて頂いておりますが、ただただ毎日トレンドに追いつくのに必死こいてます。
                     <span style="text-decoration:line-through">実際はウェブ『ボウズ』ではなく『スキンヘッド』なのですが、怖い人ではないのでご質問・ご指摘等はTwitterまでお気軽にお問い合わせください。</span> 2019年より髪の毛を生やし始めましたのでもはやボウズではありません.. ご容赦ください。
                     当サイトにおけるすべてのコンテンツは私の個人的見解によるものであり私の雇用者の意見を代弁するものではありません。
@@ -64,6 +64,7 @@ export class UskayProfile extends UskayUI {
                 <h3>恐れ多くも人前に立たせてもらったりしてます</h3>
                 <hr>
                 <ul>
+                    <li>Chrome Dev Summit 2019 | <a href="https://www.youtube.com/watch?v=X2zqwMBBvIs" target="_blank">In which we make loading disappear with 'portal' and friends</a></li>
                     <li>AMP Conf 2019 | <a href="https://www.ampproject.org/amp-conf/" target="_blank">Opening & Moderation</a></li>
                     <li>HTML5 Conference 2018 | <a href="https://twitter.com/uskay/status/1066579287090749440" target="_blank">「それ、AMPで作りませんか？」--- RichでResponsiveかつ**PWA**なAMPの作り方</a></li>
                     <li>AppsJapan 2018 | <a href="https://reg.f2ff.jp/public/session/view/6593" target="_blank">Progressive Web Apps: Web UXの新たな基準を考える</a></li>
@@ -75,6 +76,9 @@ export class UskayProfile extends UskayUI {
                 <h3>たまに記事も書いたりしてます</h3>
                 <hr>
                 <ul>
+                    <li>web.dev | <a href="https://web.dev/web-bundles/" target="_blank">Get started with Web Bundles</a></li>
+                    <li>web.dev | <a href="https://web.dev/five-ways-airshift-improved-their-react-app/" target="_blank">Five ways AirSHIFT improved their React app's runtime performance</a></li>
+                    <li>web.dev | <a href="https://web.dev/hands-on-portals/" target="_blank">Hands-on with Portals: seamless navigation on the Web</a></li>
                     <li>AMPHTML Blog | <a href="https://amphtml.wordpress.com/2018/11/20/progressively-amplify-ec-cube/" target="_blank">Progressively AMPlify EC-CUBE</a></li>
                     <li>HTML5 Experts.jp | <a href="https://html5experts.jp/uskay/25391/" target="_blank">「改めまして、Progressive Web Appsと申します」── Web UXの新たな基準を考える</a></li>
                     <li>Think with Google Japan | <a href="https://apac.thinkwithgoogle.com/intl/ja_ALL/collections/optimize-to-mobile.html" target="_blank">モバイルに最適化されたユーザー体験</a></li>

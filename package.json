@@ -3,10 +3,6 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "dependencies": {
-    "firebase-admin": "7.1.0",
-    "firebase-functions": "^0.8.1"
-  },
   "scripts": {
     "build": "gulp",
     "dev": "firebase serve --only hosting,functions",
@@ -23,7 +19,6 @@
     "babel-polyfill": "^6.26.0",
     "gulp": "^3.9.1",
     "gulp-image-resize": "^0.13.0",
-    "gulp-imagemin": "^4.1.0",
     "gulp-rename": "^1.2.2",
     "gulp-uglify": "^3.0.0",
     "gulp-uglify-es": "^1.0.0",
@@ -32,5 +27,8 @@
     "vinyl": "^2.1.0",
     "webpack": "^3.10.0",
     "webpack-stream": "^4.0.0"
+  },
+  "dependencies": {
+    "gulp-imagemin": "^6.2.0"
   }
 }
