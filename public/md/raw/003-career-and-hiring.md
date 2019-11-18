@@ -86,7 +86,7 @@ Googleにある（あったよね？）採用に関して**「自分よりも優
 - [パフォーマンスバジェットのご紹介 - ウェブパフォーマンスのための予算管理](https://developers-jp.googleblog.com/2019/03/blog-post_15.html) by [@sisidovski](https://twitter.com/sisidovski)
 - [GoogleChromeLabs/performance-game](https://github.com/GoogleChromeLabs/performance-game) by [Martin Schierle](https://github.com/martinschierle)
 - [ampproject/samples/amp-camp](https://github.com/ampproject/samples/tree/master/amp-camp) by [Antoine Bisch](https://github.com/antoinebisch)
-注意点としては、**これらの表にでる仕事以外にも、むしろ地に足ついた技術の提案や各種地道なサポートもパートナー企業の成功には欠かせなく、業務の本分として行っています。**登壇したり、Chromeの新しいAPIに携わったり、カッティングエッジな記事を書いたりは、特にgTechやうちのチームとして指を加えて待っていれば降ってくるわけではなくて、今年の私の活動もgTechという大きな組織と歴史でみても**グローバルでも「初！（たぶん）」**というチャレンジとして取り組んできたものもたくさんあります。
+注意点としては、**これらの表にでる仕事以外にも、むしろ地に足ついた技術の提案や各種地道なサポートもパートナー企業の成功には欠かせなく、業務の本分として行っています。**登壇したり、Chromeの新しいAPIに携わったり、カッティングエッジな記事を書いたりは、特にgTechやうちのチームとして指をくわえて待っていれば降ってくるわけではなくて、今年の私の活動もgTechという大きな組織と歴史でみても**グローバルでも「初！（たぶん）」**というチャレンジとして取り組んできたものがたくさんあります。
 
 これらは経験上ゴリゴリに社内営業や調整をして初めてチャンスが訪れるような案件かなと感じていますが、その意味で私はそこらへん得意なので、日本チームはけっこう面白い案件に巡り逢える思います... が、すべての国で同じようなことができているとは限りません。私は面白い仕事だけをしたいですが、面白くない仕事も数多くあります。でもそういう仕事を面白くなるようにするのも面白いんですけどね。
 
