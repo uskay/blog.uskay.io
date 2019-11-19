@@ -16,6 +16,7 @@ class TopTemplateBuilder {
                 <meta name="viewport" content="width=device-width, initial-scale=1.0">
                 <link href="/img/icon-16.png" rel="shortcut icon">
                 <meta name="theme-color" content="#2b546d">
+                <title>ウェブボウズ</title>
                 <meta property="og:title" content="ウェブボウズ" />
                 <meta property="og:type" content="article" />
                 <meta property="og:url" content="/" />

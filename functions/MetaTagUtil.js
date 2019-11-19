@@ -8,6 +8,7 @@
                 
                 getMetaTag(path) {
                     return `
+                        <title>${this.metaMap.get(path).title}</title>
                         <meta property="og:title" content="${this.metaMap.get(path).title}" />
                         <meta property="og:type" content="article" />
                         <meta property="og:url" content="${path}" />
