@@ -2,7 +2,7 @@
             /** Auto generated module */
             class BuildVersion {
                 getVersion() {
-                    return 'v1574169294392';
+                    return 'v1592355984841';
                 }
             }
             module.exports = BuildVersion;

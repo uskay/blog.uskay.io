@@ -27,6 +27,7 @@ class TopTemplateBuilder {
                 <meta name="twitter:card" content="summary" />
                 <meta name="twitter:site" content="uskay" />
                 <meta name="twitter:creator" content="uskay" />
+                <link rel="apple-touch-icon" href="/img/icon-192.png">
                 <link rel="manifest" href="/manifest.json">
                 <link rel="preload" href="/json/articlelist.json" as="fetch" crossorigin=use-credentials></link>
                 ${this.getScripts(this.compatMode)}
@@ -50,7 +51,7 @@ class TopTemplateBuilder {
                         margin: 0px;
                         width: 100%;
                         height: 100%;
-                        font-family:-apple-system, BlinkMacSystemFont, "Helvetica Neue", "Segoe UI","Noto Sans Japanese","ヒラギノ角ゴ ProN W3", Meiryo, sans-serif;
+                        font-family: "Roboto",sans-serif;
                         line-height:1.8;
                     }
                     background {

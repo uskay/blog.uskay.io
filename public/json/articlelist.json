@@ -2,6 +2,14 @@
     "articles": [
         {
             "snippetFormat": "large",
+            "title": "hoge",
+            "subtitle": "fuga fuga",
+            "date": "2020年06月10日",
+            "imgsrc": "/img/article/003-001.png",
+            "link": "/article/004-trusted-web-activity"
+        },
+        {
+            "snippetFormat": "large",
             "title": "4年間必死だった話とか、キャリアとか、採用とか",
             "subtitle": "特に技術的な話はなく、今年何やったかと「これから」について少し",
             "date": "2019年11月19日",

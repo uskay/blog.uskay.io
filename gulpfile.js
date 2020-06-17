@@ -44,13 +44,19 @@ gulp.task('webpack', () =>
 );
 
 gulp.task('imgMin', () =>
-	gulp.src('./public/img/**/*.png', {base: './public/img/'})
+	gulp.src('./public/img/raw/**/*.png', {base: './public/img/raw/'})
 		.pipe(imagemin())
 		.pipe(gulp.dest('./public/img/'))
 );
 
+gulp.task('imgMinArticle', () =>
+	gulp.src('./public/img/article/raw/*.{jpg,png}', {base: './public/img/article/raw/'})
+		.pipe(imagemin())
+		.pipe(gulp.dest('./public/img/article/'))
+);
+
 gulp.task('imgResize', () => {
-    gulp.src('./public/img/article/*.{jpg,png}')
+    gulp.src('./public/img/article/raw/*.{jpg,png}')
         .pipe(imageResize({
             width : 700,
             upscale : false
@@ -158,6 +164,7 @@ gulp.task('default', [
         "imgResize", 
         "generateIcon", 
         'imgMin', 
+        'imgMinArticle', 
         "validPath", 
         "versioning", 
         "metaTag", 

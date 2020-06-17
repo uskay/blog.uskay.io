@@ -43,7 +43,7 @@ class ArticleTemplateBuilder {
                         padding: 0px;
                         margin: 0px;
                         width: 100%;
-                        font-family:-apple-system, BlinkMacSystemFont, "Helvetica Neue", "Segoe UI","Noto Sans Japanese","ヒラギノ角ゴ ProN W3", Meiryo, sans-serif;
+                        font-family: "Roboto",sans-serif;
                         line-height:1.8;
                     }
                     background {

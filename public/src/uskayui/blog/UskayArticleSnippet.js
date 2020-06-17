@@ -42,13 +42,13 @@ export class UskayArticleSnippet extends UskayUI {
                     overflow: hidden;
                 }
                 .img-wrapper-large + .snippet{
-                    width:100%;
+                    width:640px;
                 }
                 .snippet {
                     float: left;
                     background-color: #FFF;
-                    height:100px;
                     width:500px;
+                    padding-bottom: 10px
                 }
                 .snippet .title {
                     overflow: hidden;
@@ -88,7 +88,7 @@ export class UskayArticleSnippet extends UskayUI {
                         white-space: normal;
                     }
                     .snippet {
-                        width:100%;
+                        width:100% !important; 
                         height: 100%;
                         padding-top:5px;
                         padding-bottom: 15px;
