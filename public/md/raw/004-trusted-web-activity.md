@@ -102,6 +102,8 @@ AndroidではIntentに対していろいろな付加情報を`putExtra`で追加
 - Trusted Web Activityを使ったPWAのアプリ化は、**ツール郡が揃ってきていてそれなりに気軽にできるようなった印象です。**
 - 一方で[Bubblewrap validator](https://github.com/GoogleChromeLabs/bubblewrap/tree/master/packages/validator)にもあるとおり、**前提としてPWAとパフォーマンスの基準を満たす必要があるのでやはりその対応は優先度「高」かと思います。**
 - 今回はトラッキングまわりも検証してみましたが、対応策はいろいろありそうなので**そこまでブロッカーにはならないかなと感じました。**
-また気づいた点あれば更新していきます。今夜は眠れるといいなぁ。
+ただしそれぞれかなりライトな検証しかしてないので見落としている可能性は大いにあります。また気づいた点あれば更新していきます。
+
+今夜は眠れるといいなぁ。
 
 {"footer": {"title": "随時更新中 - Trusted Web Activtyを触ってみる", "text": "手探りでPWAをアプリ化してみる作業ログ", "url": "/article/004-trusted-web-activity"}}
