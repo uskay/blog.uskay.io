@@ -75,7 +75,7 @@ AndroidではIntentに対していろいろな付加情報を`putExtra`で追加
 その上で、実際にIntentを独自カスタマイズして`putExtra(Browser.EXTRA_HEADERS, customHeaders)`する処理を書いて注入していきます。こちらも[実際のコード全容はこちら](https://github.com/uskay/io.uskay.blog.twa/tree/master/app/src/main/java/io/uskay/blog/twa)。
 
 ```gist 8f225c8bdc6ef46a94627181bd72c0e5```
-ちょっとハマったのが、[Advertising IDを取得する処理](https://github.com/uskay/io.uskay.blog.twa/blob/master/app/src/main/java/io/uskay/blog/twa/AdInfoSingleton.java#L16)が非同期処理が存在しなかったので、[ApplicationのonCreate時に取得するようにした](https://github.com/uskay/io.uskay.blog.twa/blob/master/app/src/main/java/io/uskay/blog/twa/MyApp.java#L9)のですが、あってるのかな（なんか今の私の実装だとRace Conditinon大いにありそう）。ひとまず今回はGoogle Adsの[App Conversion Tracking API](https://developers.google.com/app-conversion-tracking/api/request-response-specs)に必要なデータを追加してみました。
+ちょっとハマったのが、[Advertising IDを取得する処理](https://github.com/uskay/io.uskay.blog.twa/blob/master/app/src/main/java/io/uskay/blog/twa/AdInfoSingleton.java#L16)が非同期処理しか存在しなかったので、[ApplicationのonCreate時に取得するようにした](https://github.com/uskay/io.uskay.blog.twa/blob/master/app/src/main/java/io/uskay/blog/twa/MyApp.java#L9)のですが、あってるのかな（なんか今の私の実装だとRace Conditinon大いにありそう）。ひとまず今回はGoogle Adsの[App Conversion Tracking API](https://developers.google.com/app-conversion-tracking/api/request-response-specs)に必要なデータを追加してみました。
 ### 動かしてみる
 ちゃんと独自追加したHTTP Request Headerがついています。よかった。こちらちなみに私の[AVD](https://developer.android.com/studio/run/managing-avds)上で動かしているものです（Advertising IDなどもテスト環境のもの）。
 
