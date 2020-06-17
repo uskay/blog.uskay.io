@@ -98,4 +98,4 @@ AndroidではIntentに対していろいろな付加情報を`putExtra`で追加
 
 今夜は眠れるといいなぁ。
 
-{"footer": {"title": "随時更新中 - Trusted Web Activtyを触ってみる", "text": "手探りでPWAをアプリ化してみる作業ログ", "url": "/article/004-trusted-web-activity"}}
+{"footer": {"title": "随時更新中 - Trusted Web Activityを触ってみる", "text": "手探りでPWAをアプリ化してみる作業ログ", "url": "/article/004-trusted-web-activity"}}

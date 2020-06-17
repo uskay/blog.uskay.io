@@ -1,4 +1,4 @@
-{"header": {"title": "随時更新中 - Trusted Web Activtyを触ってみる", "subtitle": "手探りでPWAをアプリ化してみる作業ログ", "date": "2020年06月17日"}}
+{"header": {"title": "随時更新中 - Trusted Web Activityを触ってみる", "subtitle": "手探りでPWAをアプリ化してみる作業ログ", "date": "2020年06月17日"}}
 ![Hero image](/img/article/004-001.png 700x350)
 
 暑くなってきましたね。なんか昨夜暑すぎて非常に寝苦しかったので、就寝をあきらめ、今まで「時間がない」を言い訳に着手していなかった技術検証を寝落ちするまでひとまず進めてみようと一人立ち上がったオジサンが私です。お久しぶりです。こちら改めまして **「会社の意見は一切代表していませんし、ありません。すべて私の個人的な見解です。」** な技術検証作業ログです。
@@ -106,4 +106,4 @@ AndroidではIntentに対していろいろな付加情報を`putExtra`で追加
 
 今夜は眠れるといいなぁ。
 
-{"footer": {"title": "随時更新中 - Trusted Web Activtyを触ってみる", "text": "手探りでPWAをアプリ化してみる作業ログ", "url": "/article/004-trusted-web-activity"}}
+{"footer": {"title": "随時更新中 - Trusted Web Activityを触ってみる", "text": "手探りでPWAをアプリ化してみる作業ログ", "url": "/article/004-trusted-web-activity"}}
