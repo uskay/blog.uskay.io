@@ -16,7 +16,7 @@ export class UskayGlobalHeader extends UskayUI {
             profileImgHeight: "400",
             profileImgBorderRadius: "50%",
             name: "Yusuke Utsunomiya",
-            jobTitle: "Staff Mobile Solutions Consultant, Google"
+            jobTitle: "Staff Solutions Consultant, Google"
         }
         super.render(data);        
     }

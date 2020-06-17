@@ -25,12 +25,12 @@ Trusted Web Activityを利用したアプリは実際にはWebアプリが動く
 ![Lighthouse PWA audit](/img/article/004-002.png 670x72)
 
 こちら1000年前にはなかった評価項目かと思うので愚直に対応します（こういうののために[Perfromance Budget](https://web.dev/performance-budgets-101/)じゃないですけど、定期的にヘルスチェックは必要だなーとしみじみ）。
-- apple-touch-iconを追加
-- maskable iconを追加
+- [apple-touch-icon](https://github.com/uskay/blog.uskay.io/blob/master/functions/templates/TopTemplateBuilder.js#L30)を追加
+- [maskable icon](https://github.com/uskay/blog.uskay.io/blob/master/public/manifest.json#L16)を追加
 再度Validationを実施してみると...
 
 ```gist bafe95ca8cf768b277bff202336e9895```
-**SUCCESS!!**これで下ごしらえはできました。ちなみにBubblewrap validatorは[ここらへんの実装をみると](https://github.com/GoogleChromeLabs/bubblewrap/blob/master/packages/validator/src/lib/PwaValidator.ts)実際どんなことしてるかがわかってスッキリするかと思います。
+**SUCCESS🎉** これで下ごしらえはできました。ちなみにBubblewrap validatorは[ここらへんの実装をみると](https://github.com/GoogleChromeLabs/bubblewrap/blob/master/packages/validator/src/lib/PwaValidator.ts)実際どんなことしてるかがわかってスッキリするかと思います。
 ### Androidプロジェクトを生成
 `$ bubblewrap init`していきます。
 
@@ -43,10 +43,10 @@ Trusted Web Activityを利用したアプリは実際にはWebアプリが動く
 AndroidManifest.xmlを見ると、起動時のアクションとして`com.google.androidbrowserhelper.trusted.LauncherActivity`が指定されていて、またそのIntent Filterとして`android:host="blog.uskay.io"`と`android:scheme="https"`が`android:autoVerify="true"`として設定されており、httpsスキーマでのディープリンクかつ[Digital Asset Link](https://developers.google.com/digital-asset-links/v1/getting-started)の検証までがデフォルトで準備されています。
 
 ```gist 224979ac04ec6310fb7dd7192da72204```
-`build.gradle`の中身を覗くと、なんかリソースとしてWeb App Manifestの内容を追加していて、最終的にはそこで生成されたgradleResValues.xmlに設定された値が、`AndroidManifest.xml`等で参照されているようみ見えます。従って、何か値を修正するとしたら、gradleをいじるか、`$ bubblewrap update`するとよさそう。
+`build.gradle`の中身を覗くと、なんかリソースとしてWeb App Manifestの内容を追加していて、最終的にはそこで生成されたgradleResValues.xmlに設定された値が、AndroidManifest.xml等で参照されているようみ見えます。従って、何か値を修正するとしたら、gradleをいじるか、`$ bubblewrap update`するとよさそう。
 
 ```gist 39ef1324032c8bdca9b797b8977b6de2```
-特にその他生成されているActivityはなく、[android-browser-helper](https://github.com/GoogleChrome/android-browser-helper/tree/master/androidbrowserhelper)で用意されているものをそのまま使っているようですね。BuildConfigくらいしか存在しない。デフォルトで色々用意されていて便利ですね。
+特にその他生成されているActivityはなく、[android-browser-helper](https://github.com/GoogleChrome/android-browser-helper/tree/master/androidbrowserhelper)で用意されているものをそのまま使っているようですね。BuildConfigくらいしか存在しない。**デフォルトで色々用意されていて便利ですね。**
 
 ![Auto generated BuildConfig.java](/img/article/004-003.png 700x179)
 
@@ -74,32 +74,34 @@ Trusted Web ActivityはフルフィーチャーなChromeの上で動いている
 AndroidではIntentに対していろいろな付加情報を`putExtra`で追加できるようで、今回はその中の`Browser.EXTRA_HEADERS`を利用したいと思います。ちょうど[AppsFlyerの例](https://support.appsflyer.com/hc/en-us/articles/360002330178-Using-AppsFlyer-with-TWA#inapp-events-with-twa-sending-appsflyer-id-through-custom-headers)にもありますが、Bubblewrap関係なく素で実装するとこんな感じになるはず。
 
 ```gist 148e3adc650a1da7350cc8415e1d4fd5```
-ただ、前述したとおり、Bubblewrapは[LauncherActivity](https://github.com/GoogleChrome/android-browser-helper/blob/master/androidbrowserhelper/src/main/java/com/google/androidbrowserhelper/trusted/LauncherActivity.java)を利用しているので、それを活かしながらCustom Headerを追加しようとすると、そのままではうまく拡張できない気配があります。独自のQuery Parameterを設定するために[getLaunchingUrl](https://github.com/GoogleChrome/android-browser-helper/blob/master/androidbrowserhelper/src/main/java/com/google/androidbrowserhelper/trusted/LauncherActivity.java#L253)はOverrideできるように作られています。が、Custom Headerに関しては、実際に`putExtra`したい対象のIntentを組み立てる[TrustedWebActivityIntentBuilder](https://github.com/GoogleChrome/custom-tabs-client/blob/master/customtabs/src/android/support/customtabs/trusted/TrustedWebActivityIntentBuilder.java)を生成するところが、[onCreateに直接書かれているので](https://github.com/GoogleChrome/android-browser-helper/blob/master/androidbrowserhelper/src/main/java/com/google/androidbrowserhelper/trusted/LauncherActivity.java#L149)なんか初見ここに何かを差し込むのは厳しそうに思えてきました。なので最適解はおいておいて、ひとまずここは検証を先にすすめるという意味で、こちらをForkしてIntentに付加情報をInjectできるように作り変えてみます。
+ただ、前述したとおり、Bubblewrapは[LauncherActivity](https://github.com/GoogleChrome/android-browser-helper/blob/master/androidbrowserhelper/src/main/java/com/google/androidbrowserhelper/trusted/LauncherActivity.java)を利用しているので、それを活かしながらCustom Headerを追加しようとすると、そのままではうまく拡張できない気配があります。独自のQuery Parameterを設定するために[getLaunchingUrl](https://github.com/GoogleChrome/android-browser-helper/blob/master/androidbrowserhelper/src/main/java/com/google/androidbrowserhelper/trusted/LauncherActivity.java#L253)はOverrideできるように作られています。一方でCustom Headerに関しては、実際に`putExtra`したい対象のIntentを組み立てる[TrustedWebActivityIntentBuilder](https://github.com/GoogleChrome/custom-tabs-client/blob/master/customtabs/src/android/support/customtabs/trusted/TrustedWebActivityIntentBuilder.java)を生成するところが、[onCreateに直接書かれているので](https://github.com/GoogleChrome/android-browser-helper/blob/master/androidbrowserhelper/src/main/java/com/google/androidbrowserhelper/trusted/LauncherActivity.java#L149)なんか初見ここに何かを差し込むのは厳しそうに思えてきました。**なので最適解はおいておいて、ひとまずここは検証を先にすすめるという意味で、こちらをForkしてIntentに付加情報をInjectできるように作り変えてみます。**
 - 明らかに共通部分と思わしき、そして実際に`builder.build(customTabSession).getIntent()`でIntentを触っている、[TwaLauncher](https://github.com/GoogleChrome/android-browser-helper/blob/master/androidbrowserhelper/src/main/java/com/google/androidbrowserhelper/trusted/TwaLauncher.java)には基本手を加えない。また、`builder.build`をコールしている箇所は他にもありそう。
 - 逆にLauncher Activityで一番最初にTrustedWebActivityIntentBuilderを生成する処理を、拡張可能にしてあげれば他もちゃんと動きそう。
-とうことで、拡張済の独自IntentBuilderを差し込めるようにFactoryをかまし、そこでIntentだけをカスタマイズできる処理を外部注入できるようにひとまずしてみました。今回試してみた変更の[実際のコードはこちら](https://github.com/GoogleChrome/android-browser-helper/compare/master...uskay:uskay-patch)。
+とうことで、拡張済の独自IntentBuilderを差し込めるようにFactoryをかまし、そこでIntentだけをカスタマイズできる処理を外部注入できるようにひとまずしてみました（[AndroidManifest.xmlで注入クラスを定義](https://github.com/uskay/io.uskay.blog.twa/blob/master/app/src/main/AndroidManifest.xml#L14)する感じ）。今回試してみた変更の[実際のコードはこちら](https://github.com/GoogleChrome/android-browser-helper/compare/master...uskay:uskay-patch)。
 
 ```gist a0c8a3ff575dbf4a22a38ef33e1c68d9```
-その上で、実際にIntentを独自カスタマイズする処理を書いて注入していきます。こちらも[実際のコードはこちら](https://github.com/uskay/io.uskay.blog.twa/tree/master/app/src/main/java/io/uskay/blog/twa)。
+その上で、実際にIntentを独自カスタマイズして`putExtra(Browser.EXTRA_HEADERS, customHeaders)`する処理を書いて注入していきます。こちらも[実際のコードはこちら](https://github.com/uskay/io.uskay.blog.twa/tree/master/app/src/main/java/io/uskay/blog/twa)。
 
 ```gist 8f225c8bdc6ef46a94627181bd72c0e5```
-ちょっとハマったのが、[Advertising IDを取得する処理](https://github.com/uskay/io.uskay.blog.twa/blob/master/app/src/main/java/io/uskay/blog/twa/AdInfoSingleton.java#L16)が非同期処理が存在しなかったので、Applicationの[onCreate時](https://github.com/uskay/io.uskay.blog.twa/blob/master/app/src/main/java/io/uskay/blog/twa/MyApp.java#L9)に取得するようにしたのですが、あってるのかな（なんか今の私の実装だとRace Conditinon大いにありそう）。ひとまず今回はGoogle Adsの[App Conversion Tracking API](https://developers.google.com/app-conversion-tracking/api/request-response-specs)に必要なデータを追加してみました。
-
+ちょっとハマったのが、[Advertising IDを取得する処理](https://github.com/uskay/io.uskay.blog.twa/blob/master/app/src/main/java/io/uskay/blog/twa/AdInfoSingleton.java#L16)が非同期処理が存在しなかったので、[ApplicationのonCreate時に取得するようにした](https://github.com/uskay/io.uskay.blog.twa/blob/master/app/src/main/java/io/uskay/blog/twa/MyApp.java#L9)のですが、あってるのかな（なんか今の私の実装だとRace Conditinon大いにありそう）。ひとまず今回はGoogle Adsの[App Conversion Tracking API](https://developers.google.com/app-conversion-tracking/api/request-response-specs)に必要なデータを追加してみました。
 ### 動かしてみる
 ちゃんと独自追加したHTTP Request Headerがついています。よかった。こちらちなみに私の[AVD](https://developer.android.com/studio/run/managing-avds)上で動かしているものです（Advertising IDなどもテスト環境のもの）。
+
 ![Custom Header](/img/article/004-005.png 859x258)
 
 署名済のAPKは、ちゃんとフルスクリーンで起動します（AVDだとスプラッシュスクリーンでないのなんでだろう？実端末だと出ます。）。
+
 ![youtube](https://www.youtube.com/embed/vMSIuExnKYQ 560x315)
 
 ## 5. Play Storeに掲載してみる
-審査中...（進展がアレばこちら更新します）
-![Play Store](/img/article/004-006.png 700x238)
+審査中...（進展があればこちら更新します）
+
+![Play Store](/img/article/004-006.png 1984x674)
 
 ## 全体を通して
-- Trusted Web Activityを使ったPWAのアプリ化はツール郡が揃ってきていてそれなりに気軽にできるようなった印象です。
-- 一方で[Bubblewrap validator](https://github.com/GoogleChromeLabs/bubblewrap/tree/master/packages/validator)にもあるとおり、前提としてPWAとパフォーマンスの基準を満たす必要があるのでやはりその対応は優先度「高」かと思います。
-- 今回はトラッキングまわりも検証してみましたが、対応策はいろいろありそうなのでそこまでブロッカーにはならないかなと感じました。
+- Trusted Web Activityを使ったPWAのアプリ化は、**ツール郡が揃ってきていてそれなりに気軽にできるようなった印象です。**
+- 一方で[Bubblewrap validator](https://github.com/GoogleChromeLabs/bubblewrap/tree/master/packages/validator)にもあるとおり、**前提としてPWAとパフォーマンスの基準を満たす必要があるのでやはりその対応は優先度「高」かと思います。**
+- 今回はトラッキングまわりも検証してみましたが、対応策はいろいろありそうなので**そこまでブロッカーにはならないかなと感じました。**
 また気づいた点あれば更新していきます。今夜は眠れるといいなぁ。
 
 {"footer": {"title": "随時更新中 - Trusted Web Activtyを触ってみる", "text": "手探りでPWAをアプリ化してみる作業ログ", "url": "/article/004-trusted-web-activity"}}

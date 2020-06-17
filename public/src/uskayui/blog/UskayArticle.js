@@ -64,8 +64,9 @@ export class UskayArticle extends UskayUI {
             a:hover { color: blue; }
             a:active { color: blue; }
             code {
-                background-color:#2b546d;
-                color: #FFF;
+                background-color: #f7f7f7;
+                color: black;
+                border: 1px solid #dadce0;
             }
         `
     }

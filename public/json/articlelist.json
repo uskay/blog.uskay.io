@@ -2,10 +2,10 @@
     "articles": [
         {
             "snippetFormat": "large",
-            "title": "hoge",
-            "subtitle": "fuga fuga",
-            "date": "2020年06月10日",
-            "imgsrc": "/img/article/003-001.png",
+            "title": "随時更新中 - Trusted Web Activtyを触ってみる",
+            "subtitle": "手探りでPWAをアプリ化してみる作業ログ",
+            "date": "2020年06月17日",
+            "imgsrc": "/img/article/004-001.png",
             "link": "/article/004-trusted-web-activity"
         },
         {

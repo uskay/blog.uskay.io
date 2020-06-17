@@ -150,6 +150,7 @@ gulp.task("metaTag", ()=>{
                         <meta name="twitter:card" content="summary_large_image" />
                         <meta name="twitter:site" content="@uskay" />
                         <meta name="twitter:creator" content="@uskay" />
+                        <link rel="apple-touch-icon" href="/img/icon-192.png">
                         \`
                 }
             }
