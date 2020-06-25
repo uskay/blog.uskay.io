@@ -1,4 +1,4 @@
-{"header": {"title": "随時更新中 - Trusted Web Activityを触ってみる", "subtitle": "手探りでPWAをアプリ化してみる作業ログ", "date": "2020年06月17日"}}
+{"header": {"title": "Trusted Web Activityを触ってみる", "subtitle": "手探りでPWAをアプリ化してみる作業ログ", "date": "2020年06月17日"}}
 ![Hero image](/img/article/004-001.png 700x350)
 
 暑くなってきましたね。なんか昨夜暑すぎて非常に寝苦しかったので、就寝をあきらめ、今まで「時間がない」を言い訳に着手していなかった技術検証を寝落ちするまでひとまず進めてみようと一人立ち上がったオジサンが私です。お久しぶりです。こちら改めまして **「会社の意見は一切代表していませんし、ありません。すべて私の個人的な見解です。」** な技術検証作業ログです。
@@ -9,7 +9,10 @@
 ## 0. 前提
 - 私はAndroidアプリ開発はスーパー初心者で全く知識がありません。なので、初心者が手探りで[Android Studio](https://developer.android.com/studio)とか[Play Console](https://developer.android.com/distribute/console)触ってる、くらいのライトなログです。
 - そもそもPWAをアプリ化すると何がうれしいの？など戦略の部分はあまり触れません。公式情報としては[ここらへん](https://developers.google.com/web/android/trusted-web-activity#:~:text=There%20are%20a%20few%20things%20that%20make%20Trusted%20Web%20Activity%20different%20from%20other%20ways%20to%20open%20web%20content%20from%20your%20Android%20app%3A)読むといいかもしれません。
-- 調べごとしながら書いてるので随時更新していくかと思います。
+- ~調べごとしながら書いてるので随時更新していくかと思います。~ 一旦アプリリリースできたので記事としては更新終了します。
+### 更新
+- 20200617 20:23 - Beta版としてAppBundleをリリース
+- 20200619 14:00-ish - 無事審査完了。[https://play.google.com/store/apps/details?id=io.uskay.blog.twa](https://play.google.com/store/apps/details?id=io.uskay.blog.twa)として公開できました。
 
 ## 1. Bubblewrapでプロジェクトの雛形を生成
 Trusted Web Activityを使ったアプリ作成は色々ツールが出揃ってきている印象で、GUIだとMicrosoftが公開している[PWABuilder](https://www.pwabuilder.com/)がありますし、CLIだと[Bubblewrap](https://github.com/GoogleChromeLabs/bubblewrap)（旧[Llama Pack](https://www.npmjs.com/package/@llama-pack/cli)）が用意されています。PWABuilderなんかすごい簡単で、**3ステップくらいでAPK吐き出します。**PWAを立ち上げる軽量なAPKを生成するという単純な目的であればこういうツール類を素直にそのまま使うので十分ではないでしょうか。ただ今回はもろもろ検証するという目的で、Bubblewrapを利用してAndroidプロジェクトの雛形を吐き出してそれを使うことにします。
@@ -94,9 +97,9 @@ AndroidではIntentに対していろいろな付加情報を`putExtra`で追加
 ![youtube](https://www.youtube.com/embed/vMSIuExnKYQ 560x315)
 
 ## 5. Play Storeに掲載してみる
-審査中...（進展があればこちら更新します）
-
-![Play Store](/img/article/004-006.png 1984x674)
+~審査中...（進展があればこちら更新します）~ 審査も通って無事公開できました。800KBくらい。
+- [https://play.google.com/store/apps/details?id=io.uskay.blog.twa](https://play.google.com/store/apps/details?id=io.uskay.blog.twa)
+![Play Store](/img/article/004-007.png 1000x408)
 
 ## 全体を通して
 - Trusted Web Activityを使ったPWAのアプリ化は、**ツール郡が揃ってきていてそれなりに気軽にできるようなった印象です。**
@@ -106,4 +109,4 @@ AndroidではIntentに対していろいろな付加情報を`putExtra`で追加
 
 今夜は眠れるといいなぁ。
 
-{"footer": {"title": "随時更新中 - Trusted Web Activityを触ってみる", "text": "手探りでPWAをアプリ化してみる作業ログ", "url": "/article/004-trusted-web-activity"}}
+{"footer": {"title": "Trusted Web Activityを触ってみる", "text": "手探りでPWAをアプリ化してみる作業ログ", "url": "/article/004-trusted-web-activity"}}

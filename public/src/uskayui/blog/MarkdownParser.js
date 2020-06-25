@@ -142,6 +142,9 @@ export class MarkdownParser {
             parseCode() {
                 return this.createNewRow(/`(.+?)`/g, `<code>$1</code>`);
             }
+            parseLineThrough() {
+                return this.createNewRow(/~(.+?)~/g, `<span style="text-decoration: line-through">$1</span>`);
+            }
 
             /**
              * Ol / Ul lists
@@ -213,6 +216,7 @@ export class MarkdownParser {
             .parseLink()
             .parseEmphasis()
             .parseCode()
+            .parseLineThrough()
             /** Lastly, parse Ol Ul lists **/
             .parseList();
     }

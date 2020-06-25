@@ -31,7 +31,7 @@ export class UskayArticleList extends UskayUI {
                     color: #2b546d;
                     margin-left: 10px;
                 }
-                @media all and (max-width: 699px) {
+                @media all and (max-width: 1319px) {
                     h2 {
                         display: none
                     }

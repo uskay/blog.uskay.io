@@ -74,6 +74,28 @@ class TopTemplateBuilder {
                             height: 54px;
                         }
                     }
+                    @media (min-width: 1200px) {
+                        .responsiveWrapper {
+                            display: table;
+                            margin: 0 auto;
+                            max-width: 1160px;
+                            position: relative;
+                        }
+                        uskay-article-list {
+                            float: left;
+                            border-radius: 2px;
+                            width: 700px;
+                            box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+                        }
+                        uskay-profile {
+                            float: left;
+                            width: 400px;
+                            border-radius: 2px;
+                            margin-left: 20px;
+                            padding: 10px 20px 30px 20px;
+                            box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+                        }
+                    }
                 </style>
                 <script defer src="https://www.googletagmanager.com/gtag/js?id=UA-63868653-2"></script>
                 <noscript>Suup Broski, you hate Javascript? Javascript is awesome🤘<</noscript>
@@ -81,8 +103,10 @@ class TopTemplateBuilder {
                 <uskay-global-header></uskay-global-header>
                 <div id="dummyHeader"></div>
                 <div id="dummyBody"></div>
+                <div class="responsiveWrapper">
                 <uskay-article-list></uskay-article-list>
                 <uskay-profile></uskay-profile>
+                </div>
                 <uskay-global-footer></uskay-global-footer>
                 <script>
                     window.addEventListener("load", _ => {
