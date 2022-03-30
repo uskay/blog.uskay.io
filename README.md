@@ -14,7 +14,7 @@ I'm now like, nah, let's just build another one 🤣 and here's the v2. The conc
 - but for simplicity w/o using any 3P bundlers (b/c that does add on 3P dependencies!)...
 - and can be maitaned and publishing new articles by just writing markdowns.
 
-This time, I'm not that much pickie in the Lighthouse scores and the best practices. I know things are not beautiful and far from perfection, but face it, that's life. Just make it work. 
+This time, I'm not that much pickie in the Lighthouse scores and the best practices. I know things are not beautiful and far from perfection, but let's face it, that's life. Just make it work and I'm happy 🙌
 
 ## For my own sake
 ### Build
