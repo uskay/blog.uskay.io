@@ -3,7 +3,7 @@
 🧨 Experimental Node.js based Static Site Generator for https://blog.uskay.io
 
 ## Background
-I built v1 in 2018 to test out bunch of cutting-edge web platform features and best practices (see blog post [here](https://blog.uskay.io/article/001-pwa-blog-loading) and the [branch](https://github.com/uskay/blog.uskay.io/tree/uskay-ui)) but ended up not maintainig things. Time passed and now in 2022, I thought of posting a new blog post and found out that many of the Node.js related libraries I was using were deprecated and/or needed update... and was stuck in an endless loop of fixing dependencies 🤮 
+I built v1 in 2018 to test out bunch of new web platform features and best practices (see blog post [here](https://blog.uskay.io/article/001-pwa-blog-loading) and the [branch](https://github.com/uskay/blog.uskay.io/tree/uskay-ui)) but ended up not maintainig things. Time passed and now in 2022, I thought of posting a new blog post and found out that many of the Node.js related libraries I was using were deprecated and/or needed update... and was stuck in an endless loop of fixing dependencies 🤮 
 
 ![node meme](https://cdn.glitch.global/d1d49b49-541b-4e26-8cd5-f7fa3a45e1aa/nodememe.jpg?v=1648655364487)
 
