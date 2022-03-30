@@ -3,7 +3,10 @@
 🧨 Experimental Node.js based Static Site Generator for https://blog.uskay.io
 
 ## Background
-I built v1 in 2018 to test out bunch of cutting-edge web platform features and best practices (see blog post [here](https://blog.uskay.io/article/001-pwa-blog-loading) and the [branch](https://github.com/uskay/blog.uskay.io/tree/uskay-ui)) but ended up not maintainig things. Time passed and now in 2022, I thought of posting a new blog post and found out that many of the Node.js related libraries I was using were deprecated and/or needed update... and became stuck in an endless loop of fixing dependencies 🤮 I'm now like, nah, let's just build another one and here's the v2. The concepts of this new system are:
+I built v1 in 2018 to test out bunch of cutting-edge web platform features and best practices (see blog post [here](https://blog.uskay.io/article/001-pwa-blog-loading) and the [branch](https://github.com/uskay/blog.uskay.io/tree/uskay-ui)) but ended up not maintainig things. Time passed and now in 2022, I thought of posting a new blog post and found out that many of the Node.js related libraries I was using were deprecated and/or needed update... and was stuck in an endless loop of fixing dependencies 🤮 
+![node meme](https://cdn.glitch.global/d1d49b49-541b-4e26-8cd5-f7fa3a45e1aa/nodememe.jpg?v=1648655364487)
+
+I'm now like, nah, let's just build another one 🤣 and here's the v2. The concepts of this new system are:
 - To build a Node.js Static Site Generator, do not use 3P libraries (or at least try not to because I'm fed up with this dependency hell). The only library I ended up using was the one related to image optimization b/c I was not smart enough to build an image processor myself.
 - But being able to build components as a "single file component" - having HTML, CSS and JavaScript (if needed) in a single file (really, w/o using any libraries like `htm`) and use it to make templates...
 - but only using pure ES6 syntax, no jsx and such...
@@ -11,7 +14,7 @@ I built v1 in 2018 to test out bunch of cutting-edge web platform features and b
 - but for simplicity w/o using any 3P bundlers (b/c that does add on 3P dependencies!)...
 - and can be maitaned and publishing new articles by just writing markdowns.
 
-This time, I'm not that much pickie in the Lighthouse scores and the best practices. Just make it work.
+This time, I'm not that much pickie in the Lighthouse scores and the best practices. I know things are not beautiful and far from perfection, but face it, that's life. Just make it work. 
 
 ## For my own sake
 ### Build
