@@ -6,11 +6,6 @@
       "**/.*",
       "**/node_modules/**"
     ],
-    "rewrites": [ 
-      {"source": "/", "function": "requestHandler"},
-      {"source": "/article/*", "function": "requestHandler"},
-      {"source": "/sw.js", "function": "requestHandler"},
-      {"source": "/offline", "function": "requestHandler"}
-    ]
+    "cleanUrls": true
   }
 }

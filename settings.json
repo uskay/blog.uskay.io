@@ -1,0 +1,10 @@
+{
+  "workdir": "./blog",
+  "distdir": "./public",
+  "articlelist": [
+    "001-pwa-blog-loading",
+    "002-hands-on-portals",
+    "003-career-and-hiring",
+    "004-trusted-web-activity"
+  ]
+}
