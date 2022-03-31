@@ -44,7 +44,7 @@ export class Route {
       }
     `)
     this.compose();
-    return `
+    return /* html */`
       <!DOCTYPE html>
       <html lang='ja'>
       ${Array.from(this.meta).join(' ')}
@@ -52,6 +52,7 @@ export class Route {
           ${Array.from(this.css).join(' ')}
       </style>
       ${this.html.join('')}
+      <script>window.addEventListener("DOMContentLoaded",function(e){if(!window.IntersectionObserver)for(var t=document.querySelectorAll(".img-wrapper"),r=0;r<t.length;r++){var n=t[r].querySelector("img");n.setAttribute("src",n.getAttribute("data-src")),n.style.display="block"}});</script>
       <script>
           ${Array.from(this.js).join(' ')}
       </script>

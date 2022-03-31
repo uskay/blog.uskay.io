@@ -16,7 +16,8 @@ export class Author extends Component {
         align-items: center;
       }
       .author > .grid > .wrapper > img {
-        width: 100%;
+        width: 50px;
+        height: 50px;
         border-radius: 50%;
       }
       `);
