@@ -1,8 +1,5 @@
 import { Component } from './component.js';
 export class GlobalHeader extends Component {
-  constructor() {
-    super();
-  }
   getCss() {
     return this.css.add(/* css */`
       .global-header {

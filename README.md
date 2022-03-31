@@ -47,12 +47,41 @@ npm run prod
 ```
 
 ### How the Static Site Generator is built (Super high level summary)
-- The core implementation is under `./framework`
-  - `/component`: "single file component"s. You can extend `Component` (from `component.js`) to build your own component. Override `getHtml()`, `getCss()` and `getJs()`. For `getHTML()` return a String. For `getCss()` and `getJs()`, always use `this.css.add()` and `this.js.add()` to remove all the duplicates (they are `Set`s). Similary, there's `getMeta()` and `this.meta.add()`. If you'd like to include other components to build a new component, use `this.use(new SomeComponentYouWantToUse())` to get the html string and include that directly in the `getHtml()`'s template literal.
+The core implementation is under `./framework`
+  - `/component`: "single file component"s. You can extend `Component` (from `component.js`) to build your own component. Override `getHtml()`, `getCss()` and `getJs()`. For `getHTML()` return a String. For `getCss()` and `getJs()`, always use `this.css.add()` and `this.js.add()` to remove all the duplicates (they are `Set`s). Similary, there's `getMeta()` and `this.meta.add()`. If you'd like to include other components to build a new component, use `this.use(new SomeComponentYouWantToUse())` to get the html string and include that directly in the `getHtml()`'s template literal. I recommend to use VSCode extensions like [es6-string-html](https://marketplace.visualstudio.com/items?itemName=Tobermory.es6-string-html) and [es6-string-javascript](https://marketplace.visualstudio.com/items?itemName=zjcompt.es6-string-javascript) to make the component readable.
+```javascript
+import { Component } from './component.js';
+export class Example extends Component {
+  getCss() {
+    return this.css.add(/* css */`
+      .example {
+        width: 100%;
+        height: 50px;
+        display: none;
+    }
+    `);
+  }
+  getJs() {
+    return this.js.add(/* javascript */`
+      window.addEventListener('load', _ => {
+        document.querySelector('.example').style = 'block';
+      });
+    `);
+  }
+  getHtml() {
+    const name = 'uskay';
+    return /* html */`
+      <div class="example">
+        My name is ${name}
+      </div>
+  `;
+  }
+}
+```
   - `/route`: everything related to page templates
   - `/build`: build scripts are there. Extend the `Task` class (from `task.js`) to add build related scripts and remember to add them to the `task-runner.js`.
-- `./blog` is the directory to write & store your blog post. There should be individual folders per each article and add a markdown file and `img/` for images to publish a post.
-- `settings.json` is for the settings (obviously).
+
+`./blog` is the directory to write & store your blog post. There should be individual folders per each article and add a markdown file and `img/` for images to publish a post. `settings.json` is for the settings (obviously).
 
 ## License
 Codes are Apache 2.0

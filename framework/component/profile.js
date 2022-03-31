@@ -1,8 +1,5 @@
 import { Component } from './component.js';
 export class Profile extends Component {
-  constructor() {
-    super();
-  }
   getCss() {
     return this.css.add(/* css */`
       .profile {

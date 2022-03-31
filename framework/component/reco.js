@@ -39,6 +39,10 @@ export class Reco extends Component {
         border: 1px solid #595959;
         border-radius: 5px;
       }
+      .reco a {
+        text-decoration: none;
+        color: #f8f9fa;
+      }
       .reco::-webkit-scrollbar {
         background: #253239;
       }    
