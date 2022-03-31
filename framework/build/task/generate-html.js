@@ -47,7 +47,7 @@ export class GenerateHtml extends Task {
       // Generate articles
       articleList.forEach(articleId => {
         const articleDirectory = './public/article';
-        const article = new Article(articleId, getMarkdown(articleId));
+        const article = new Article(idMdMap, articleId);
         this.mkdir(articleDirectory)
         fs.writeFileSync(`./public/article/${articleId}.html`,
           minify(article.build()), 'utf-8', (e) => {

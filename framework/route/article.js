@@ -3,18 +3,16 @@ import { Route } from './route.js';
 import { Profile } from '../component/profile.js';
 import { MarkDown } from '../component/markdown.js';
 import { GlobalFooter } from '../component/global-footer.js';
+import { Reco } from '../component/reco.js';
 import * as fs from 'fs';
 
 export class Article extends Route {
-  constructor(articleId, md) {
-    super();
-    this.articleId = articleId;
-    this.md = md;
-  }
   compose() {
+    const md = this.idMdMap.get(this.articleId);
     const globalHeader = this.use(new GlobalHeader());
-    const markUp = this.use(new MarkDown(this.md));
+    const markUp = this.use(new MarkDown(md));
     const profile = this.use(new Profile());
+    const reco = this.use(new Reco(this.idMdMap, this.articleId));
     const globalFooter = this.use(new GlobalFooter());
     const getMetaData = _ => {
       // Format example:
@@ -22,7 +20,7 @@ export class Article extends Route {
       // # 🌏 Hello World! Progressive Web-Blog!!
       // ### Web ComponentsでPWAなブログを作ってみた。[Loading編]
       const meta = {};
-      this.md.split('\n').slice(0, 3).forEach(line => {
+      md.split('\n').slice(0, 3).forEach(line => {
         if (line.startsWith('!')) {
           meta.image = line.match(/\((.+\.png)/)[1];
         }
@@ -84,10 +82,11 @@ export class Article extends Route {
               <div class="article">
                   ${markUp}      
               </div>
+              ${reco}
               <hr/>
               ${profile}
           </div>
-      </div>
+      </div>      
       ${globalFooter}
     `);
   }

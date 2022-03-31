@@ -22,8 +22,8 @@ export class Profile extends Component {
         </div>
         <div>
           <ul>
-            <li><a href="https://github.com/uskay">GitHub</a></li>    
-            <li><a href="https://twitter.com/uskay">Twitter</a></li>
+            <li><a href="https://github.com/uskay/blog.uskay.io">GitHub</a></li>    
+            <li><a href="https://twitter.com/uskay">Twitter (Inactive)</a></li>
             <li><a href="https://www.linkedin.com/in/yusuke-utsunomiya-99948434/">LinkedIn</a></li>
           </ul>
         </div>

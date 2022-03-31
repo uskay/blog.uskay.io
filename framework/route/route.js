@@ -1,9 +1,11 @@
 export class Route {
-  constructor(idMdMap) {
+  constructor(idMdMap, articleId) {
     this.meta = new Set();
     this.css = new Set();
     this.js = new Set();
     this.html = new Array();
+    this.idMdMap = idMdMap;
+    this.articleId = articleId ? articleId : '';
   }
   use(component) {
     component.getCss().forEach(key => {

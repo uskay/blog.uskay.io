@@ -5,10 +5,6 @@ import { MarkDown } from '../component/markdown.js';
 import { GlobalFooter } from '../component/global-footer.js';
 
 export class Top extends Route {
-  constructor(idMdMap) {
-    super();
-    this.idMdMap = idMdMap;
-  }
   compose() {
     const globalHeader = this.use(new GlobalHeader());
     // articleId=MarkUp
@@ -88,10 +84,10 @@ export class Top extends Route {
           <div class="article-list">
             <h2 style="color: #a3a2a2; font-size: 1.2em">Randomly posted blog</h2>
             ${[...idMuMap.keys()].reverse().map(key => {
-              const mu = idMuMap.get(key);
-              return `<a href="/article/${key}"><div class="article-snippet">${mu}</div></a>`
-              }).join('')
-            }                        
+      const mu = idMuMap.get(key);
+      return `<a href="/article/${key}"><div class="article-snippet">${mu}</div></a>`
+    }).join('')
+      }                        
           </div>
           ${profile}
         </div>
