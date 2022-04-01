@@ -22,6 +22,6 @@ export class Example extends Component {
       <div class="example">
         My name is ${name}
       </div>
-  `;
+    `;
   }
 }
