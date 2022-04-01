@@ -1,10 +1,14 @@
 import { Component } from './component.js';
 export class Image extends Component {
-  constructor(src, width, height) {
+  constructor(src, width, height, shouldLoadLazy) {
     super();
     this.src = src;
     this.width = width;
     this.height = height;
+    this.shouldLoadLazy = true;
+    if (shouldLoadLazy === false) {
+      this.shouldLoadLazy = false;
+    }
   }
   getCss() {
     return this.css.add(/* css */`
@@ -19,14 +23,19 @@ export class Image extends Component {
         top: 50%;
         left: 50%;
         transform: translate(-50%,-50%);
-        display: none;
       }
     `);
   }
   getHtml() {
     return /* html */`
-      <div class="img-wrapper" style="padding-top: ${this.height / this.width * 100}%;">
-        <img data-src="${this.src}" alt="todo-add-alt" loading="lazy">
+      <div class="img-wrapper" style="padding-top: ${this.height / this.width * 100}%; diplay: ${this.shouldLoadLazy ? 'none' : 'block'}">
+        ${(_ => {
+        if (this.shouldLoadLazy) {
+          return `<img data-src="${this.src}" alt="todo-add-alt" loading="lazy">`;
+        } else {
+          return `<img src="${this.src}" alt="todo-add-alt" loading="lazy">`;
+        }
+      })()}
       </div>
     `;
   }

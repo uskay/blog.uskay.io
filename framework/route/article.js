@@ -10,7 +10,7 @@ export class Article extends Route {
   compose() {
     const md = this.idMdMap.get(this.articleId);
     const globalHeader = this.use(new GlobalHeader());
-    const markUp = this.use(new MarkDown(md));
+    const markUp = this.use(new MarkDown(md, {route: 'article'}));
     const profile = this.use(new Profile());
     const reco = this.use(new Reco(this.idMdMap, this.articleId));
     const globalFooter = this.use(new GlobalFooter());

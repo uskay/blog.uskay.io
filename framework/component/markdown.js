@@ -6,18 +6,21 @@ import { Author } from './author.js';
 import { Note } from './note.js';
 
 export class MarkDown extends Component {
-  constructor(md) {
+  constructor(md, option) {
     super();
     this.md = md.replace(/</g, '&lt;').replace(/>/g, '&gt;');
     this.previouseRow;
     const componentInstance = this;
+    let isArticle = false;
+    if (option && option.route && option.route === 'article') {
+      isArticle = true;
+    }
     this.Row = class Row {
-      constructor(row, isOl, isUl, isBlock, mdInstance) {
+      constructor(row, isOl, isUl, isBlock) {
         this.row = row;
         this.isOl = isOl === undefined ? false : isOl;
         this.isUl = isUl === undefined ? false : isUl;
         this.isBlock = isBlock;
-        this.mdInstance = mdInstance;
       }
       getInnerHTML() {
         if (this.isOl === true || this.isUl === true || this.isBlock === true) {
@@ -99,7 +102,11 @@ export class MarkDown extends Component {
             return this.createNewRow(regex, video);
           }
           const imgSrc = match[1];
-          const image = componentInstance.use(new Image(imgSrc, match[2], match[3]));
+          let shouldLoadLazy = true;
+          if (isArticle && markUp.length === 0) {
+            shouldLoadLazy = false;
+          }
+          const image = componentInstance.use(new Image(imgSrc, match[2], match[3], shouldLoadLazy));
           return this.createNewRow(regex, image);
         }
         return this;
