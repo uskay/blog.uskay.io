@@ -67,6 +67,7 @@ export class Route {
       <!-- For now, let's just add GA directly here -->
       <script defer src="https://www.googletagmanager.com/gtag/js?id=UA-63868653-2"></script>
       <script>window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);}; gtag('js', new Date()); gtag('config', 'UA-63868653-2');</script>
+      <!-- For legacy browsers, at least show images and warn  -->
       <script>
         if (!window.IntersectionObserver) {
           window.addEventListener("DOMContentLoaded", function (__evt) {
