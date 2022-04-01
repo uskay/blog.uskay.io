@@ -58,7 +58,7 @@ export class Example extends Component {
         width: 100%;
         height: 50px;
         display: none;
-    }
+      }
     `;
   }
   getJs() {
