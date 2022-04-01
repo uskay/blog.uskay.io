@@ -24,11 +24,12 @@ export class Top extends Route {
       <meta property="og:url" content="/" />
       <meta property="og:image" content="/img/top.png" />
       <meta property="og:site_name" content="ウェブボウズ" />
-      <meta property="og:description" content="⚡ I LOVE WEB ⚡" />
+      <meta property="og:description" content="uskay@'s personal blog. Ramdomly posting things related to web development." />
       <meta property="fb:app_id" content="1786319984995103" />
       <meta name="twitter:card" content="summary" />
       <meta name="twitter:site" content="uskay" />
       <meta name="twitter:creator" content="uskay" />
+      <meta name="description" content="uskay@'s personal blog. Ramdomly posting things related to web development.">
     `;
     this.css/* css */`
       .container {

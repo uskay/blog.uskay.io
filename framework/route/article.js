@@ -47,6 +47,7 @@ export class Article extends Route {
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:site" content="@uskay" />
       <meta name="twitter:creator" content="@uskay" />
+      <meta name="description" content="${meta.description}">
     `;    
     this.css/* css */`
       .container {
