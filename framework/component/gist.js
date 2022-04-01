@@ -19,7 +19,7 @@ export class Gist extends Component {
               window[CALLBACK_WINDOW_OBJ_NAME] = {};
             };
             window[CALLBACK_WINDOW_OBJ_NAME][getCallbackFnName()] = res => resolve(res);
-            scriptTag.setAttribute("src", "https://gist.github.com/" + gistId + ".json?callback=" + CALLBACK_WINDOW_OBJ_NAME + "." + getCallbackFnName());
+            scriptTag.setAttribute("src", "https://gist.github.com/uskay/" + gistId + ".json?callback=" + CALLBACK_WINDOW_OBJ_NAME + "." + getCallbackFnName());
             scriptTag.setAttribute("defer", true);
             gistElm.appendChild(scriptTag);
           });
