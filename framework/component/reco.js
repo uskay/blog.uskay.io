@@ -23,7 +23,7 @@ export class Reco extends Component {
       const columns = new Array(size).fill('70%').join(' ');
       return columns;
     }
-    return this.css.add(/* css */`
+    return this.css/* css */`
       .reco {
         padding: 10px;
         display: grid;
@@ -51,16 +51,15 @@ export class Reco extends Component {
           border-radius: 1ex;
           box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.75);
       }
-    `);
+    `;
   }
   getHtml() {
-    return /* html */`
+    return this.html/* html */`
       <div class="reco">
         ${[...this.idMuMap.keys()].reverse().map(key => {
-      const mu = this.idMuMap.get(key);
-      return `<a href="/article/${key}"><div class="reco-article-snippet">${mu}</div></a>`
-    }).join('')
-      }
+          const mu = this.idMuMap.get(key);
+          return `<a href="/article/${key}"><div class="reco-article-snippet">${mu}</div></a>`
+        }).join('')}
       </div>
     `;
   }

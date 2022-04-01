@@ -1,7 +1,7 @@
 import { Component } from './component.js';
 export class GlobalFooter extends Component {
   getCss() {
-    return this.css.add(/* css */`
+    return this.css/* css */`
       .global-footer {
         width: 100%;
         height: 150px;
@@ -13,10 +13,10 @@ export class GlobalFooter extends Component {
         font-style: italic;
         text-align: center;
       }
-    `);
+    `;
   }
   getHtml() {
-    return /* html */`
+    return this.html/* html */`
       <div class="global-footer">
         <div>
           <div>Except as otherwise noted, the content of this page is licensed under the Creative Commons Attribution 3.0 License,</div>    

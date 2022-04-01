@@ -48,29 +48,29 @@ npm run prod
 
 ### How the Static Site Generator is built (Super high level summary)
 The core implementation is under `./framework`
-  - `/component`: "single file component"s. You can extend `Component` (from `component.js`) to build your own component. Override `getHtml()`, `getCss()` and `getJs()`. For `getHTML()` return a String. For `getCss()` and `getJs()`, always use `this.css.add()` and `this.js.add()` to remove all the duplicates (they are `Set`s). Similary, there's `getMeta()` and `this.meta.add()`. If you'd like to include other components to build a new component, use `this.use(new SomeComponentYouWantToUse())` to get the html string and include that directly in the `getHtml()`'s template literal. I recommend to use VSCode extensions like [es6-string-html](https://marketplace.visualstudio.com/items?itemName=Tobermory.es6-string-html) and [es6-string-javascript](https://marketplace.visualstudio.com/items?itemName=zjcompt.es6-string-javascript) to make the component readable.
+  - `/component`: "single file component"s. You can extend `Component` (from `component.js`) to build your own component. Override `getHtml()`, `getCss()` and `getJs()`. For `getHTML()` return a String. Use the template literal tag `this.html`, `this.js` and `this.css`. Similary, there's `getMeta()` and `this.meta`. If you'd like to include other components to build a new component, use `this.use(new SomeComponentYouWantToUse())` to get the html string and include that directly in the `getHtml()`'s template literal. I recommend to use VSCode extensions like [es6-string-html](https://marketplace.visualstudio.com/items?itemName=Tobermory.es6-string-html) and [es6-string-javascript](https://marketplace.visualstudio.com/items?itemName=zjcompt.es6-string-javascript) to make the component readable.
 ```javascript
 import { Component } from './component.js';
 export class Example extends Component {
   getCss() {
-    return this.css.add(/* css */`
+    return this.css`
       .example {
         width: 100%;
         height: 50px;
         display: none;
     }
-    `);
+    `;
   }
   getJs() {
-    return this.js.add(/* javascript */`
+    return this.js`
       window.addEventListener('load', _ => {
         document.querySelector('.example').style = 'block';
       });
-    `);
+    `;
   }
   getHtml() {
     const name = 'uskay';
-    return /* html */`
+    return this.html`
       <div class="example">
         My name is ${name}
       </div>

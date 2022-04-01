@@ -1,21 +1,21 @@
 export class Route {
   constructor(idMdMap, articleId) {
-    this.meta = new Set();
-    this.css = new Set();
-    this.js = new Set();
-    this.html = new Array();
+    this.metaSet = new Set();
+    this.cssSet = new Set();
+    this.jsSet = new Set();
+    this.htmlList = new Array();
     this.idMdMap = idMdMap;
     this.articleId = articleId ? articleId : '';
   }
   use(component) {
     component.getCss().forEach(key => {
-      this.css.add(key);
+      this.cssSet.add(key);
     })
     component.getMeta().forEach(key => {
-      this.meta.add(key);
+      this.metaSet.add(key);
     })
     component.getJs().forEach(key => {
-      this.js.add(key);
+      this.jsSet.add(key);
     })
     return component.getHtml();
   }
@@ -23,10 +23,11 @@ export class Route {
     // extend
   }
   build() {
-    this.meta.add(/* html */`<meta name="viewport" content="width=device-width, initial-scale=1.0">`);
-    this.meta.add(/* html */`<link href="/img/me-16.png" rel="shortcut icon" />`);
-
-    this.css.add(/* css */`
+    this.meta/* html */`
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link href="/img/me-16.png" rel="shortcut icon" />
+    `
+    this.css/* css */`
       @font-face {
         font-family: 'Nico Moji';
         font-style: normal;
@@ -50,20 +51,16 @@ export class Route {
       a {
         color: #9da2ff;
       }
-    `)
+    `
     this.compose();
     return /* html */`
       <!DOCTYPE html>
       <html lang='ja'>
-        ${Array.from(this.meta).join(' ')}
-      <style>
-          ${Array.from(this.css).join(' ')}
-      </style>
+      ${Array.from(this.metaSet).join(' ')}
+      <style>${Array.from(this.cssSet).join(' ')}</style>
       <div id='warning'></div>
-      ${this.html.join('')}
-      <script>
-        ${Array.from(this.js).join(' ')}
-      </script>
+      ${this.htmlList.join('')}
+      <script>${Array.from(this.jsSet).join(' ')}</script>
       <!-- For now, let's just add GA directly here -->
       <script defer src="https://www.googletagmanager.com/gtag/js?id=UA-63868653-2"></script>
       <script>window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);}; gtag('js', new Date()); gtag('config', 'UA-63868653-2');</script>
@@ -93,16 +90,27 @@ export class Route {
       </html>
       `;
   }
-  addRawMeta(string) {
-    this.meta.add(string);
+  toString(strings, ...args) {
+    let value = '';
+    for (let i = 0; i < strings.length; i++) {
+      let arg = '';
+      if (i < args.length) {
+        arg = args[i];
+      }
+      value += strings[i] + arg;
+    }
+    return value;
   }
-  addRawCss(string) {
-    this.css.add(string);
+  meta(strings, ...args) {
+    return this.metaSet.add(this.toString(strings, ...args));
   }
-  addRawHtml(string) {
-    this.html.push(string);
+  js(strings, ...args) {
+    return this.jsSet.add(this.toString(strings, ...args));
   }
-  addRawJs(string) {
-    this.js.add(string);
+  css(strings, ...args) {
+    return this.cssSet.add(this.toString(strings, ...args));
+  }
+  html(strings, ...args) {
+    return this.htmlList.push(this.toString(strings, ...args));
   }
 }

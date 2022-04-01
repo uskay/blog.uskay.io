@@ -5,7 +5,7 @@ export class Gist extends Component {
     this.gistId = gistId;
   }
   getJs() {
-    return this.js.add(/* javascript */`
+    return this.js/* javascript */`
       const loadGist = gistId => {
         const gistElm = document.getElementById('gist-' + gistId);
         const getJsonp = gistId => {
@@ -35,10 +35,10 @@ export class Gist extends Component {
           });
         });
       };
-  `);
+  `;
   }
   getHtml() {
-    return /* html */`
+    return this.html/* html */`
       <div id="gist-${this.gistId}">
         <script>
           window.addEventListener('load', evt => {

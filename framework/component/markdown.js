@@ -223,13 +223,13 @@ export class MarkDown extends Component {
   }
 
   getCss() {
-    return this.css.add(/* css */`
+    return this.css/* css */`
       h1 {
         line-height: 1.4em;
       }
-    `);
+    `;
   }
   getHtml() {
-    return this.markUp;
+    return this.html`${this.markUp}`;
   }
 }

@@ -1,7 +1,7 @@
 import { Component } from './component.js';
 export class GlobalHeader extends Component {
   getCss() {
-    return this.css.add(/* css */`
+    return this.css/* css */`
       .global-header {
         width: 100%;
         height: 60px;
@@ -15,10 +15,10 @@ export class GlobalHeader extends Component {
         text-decoration: none;
         color: white;
       }
-    `);
+    `;
   }
   getHtml() {
-    return /* html */`
+    return this.html/* html */`
       <div class="global-header">
         <a href="/">ウェブボウズ</a>
       </div>

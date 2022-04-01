@@ -11,7 +11,7 @@ export class Image extends Component {
     }
   }
   getCss() {
-    return this.css.add(/* css */`
+    return this.css/* css */`
       .img-wrapper {
         width: 100%;
         position: relative;
@@ -24,14 +24,14 @@ export class Image extends Component {
         left: 50%;
         transform: translate(-50%,-50%);
       }
-    `);
+    `;
   }
   getHtml() {
-    return /* html */`
-      <div class="img-wrapper" style="padding-top: ${this.height / this.width * 100}%; diplay: ${this.shouldLoadLazy ? 'none' : 'block'}">
+    return this.html/* html */`
+      <div class="img-wrapper" style="padding-top: ${this.height / this.width * 100}%;">
         ${(_ => {
         if (this.shouldLoadLazy) {
-          return `<img data-src="${this.src}" alt="todo-add-alt" loading="lazy">`;
+          return `<img data-src="${this.src}" alt="todo-add-alt" loading="lazy" style="display: none">`;
         } else {
           return `<img src="${this.src}" alt="todo-add-alt" loading="lazy">`;
         }
@@ -40,7 +40,7 @@ export class Image extends Component {
     `;
   }
   getJs() {
-    return this.js.add(/* javascript */`
+    return this.js/* javascript */`
       const lazyLoadImg = _ => {
         const callback = (entries, observer) => {
           entries.forEach(entry => {
@@ -64,6 +64,6 @@ export class Image extends Component {
       window.addEventListener('DOMContentLoaded', _ => {
         lazyLoadImg();
       });      
-    `);
+    `;
   }
 }

@@ -4,7 +4,6 @@ import { Profile } from '../component/profile.js';
 import { MarkDown } from '../component/markdown.js';
 import { GlobalFooter } from '../component/global-footer.js';
 import { Reco } from '../component/reco.js';
-import * as fs from 'fs';
 
 export class Article extends Route {
   compose() {
@@ -35,19 +34,21 @@ export class Article extends Route {
     }
     const meta = getMetaData();
     // compose page
-    this.addRawMeta(/* html */`<title>${meta.title} | ウェブボウズ</title>`);
-    this.addRawMeta(/* html */`<link rel="preload" as="image" href="https://blog.uskay.io${meta.image}" />`);
-    this.addRawMeta(/* html */`<meta property="og:title" content="${meta.title}" />`);
-    this.addRawMeta(/* html */`<meta property="og:type" content="article" />`);
-    this.addRawMeta(/* html */`<meta property="og:url" content="/article/${this.articleId}" />`);
-    this.addRawMeta(/* html */`<meta property="og:image" content="https://blog.uskay.io${meta.image}" />`);
-    this.addRawMeta(/* html */`<meta property="og:site_name" content="ウェブボウズ" />`);
-    this.addRawMeta(/* html */`<meta property="og:description" content="${meta.description}" />`);
-    this.addRawMeta(/* html */`<meta property="fb:app_id" content="1786319984995103" />`);
-    this.addRawMeta(/* html */`<meta name="twitter:card" content="summary_large_image" />`);
-    this.addRawMeta(/* html */`<meta name="twitter:site" content="@uskay" />`);
-    this.addRawMeta(/* html */`<meta name="twitter:creator" content="@uskay" />`);
-    this.addRawCss(/* css */`
+    this.meta/* html */`
+      <title>${meta.title} | ウェブボウズ</title>
+      <link rel="preload" as="image" href="https://blog.uskay.io${meta.image}" />
+      <meta property="og:title" content="${meta.title}" />
+      <meta property="og:type" content="article" />
+      <meta property="og:url" content="/article/${this.articleId}" />
+      <meta property="og:image" content="https://blog.uskay.io${meta.image}" />
+      <meta property="og:site_name" content="ウェブボウズ" />
+      <meta property="og:description" content="${meta.description}" />
+      <meta property="fb:app_id" content="1786319984995103" />
+      <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:site" content="@uskay" />
+      <meta name="twitter:creator" content="@uskay" />
+    `;    
+    this.css/* css */`
       .container {
           width: 100%;
           display: flex;
@@ -75,8 +76,8 @@ export class Article extends Route {
           margin: 40px 0 20px 0;
           padding: 0;
       }
-    `);
-    this.addRawHtml(/* html */`
+    `;
+    this.html/* html */`
       ${globalHeader}
       <div class="container">
           <div class="grid">
@@ -89,7 +90,7 @@ export class Article extends Route {
           </div>
       </div>      
       ${globalFooter}
-    `);
+    `;
   }
 }
 

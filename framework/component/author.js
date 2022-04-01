@@ -1,7 +1,7 @@
 import { Component } from './component.js';
 export class Author extends Component {
   getCss() {
-    return this.css.add(/* css */`
+    return this.css/* css */`
       .author {
         margin-top: 20px;
       }
@@ -20,10 +20,10 @@ export class Author extends Component {
         height: 50px;
         border-radius: 50%;
       }
-      `);
+    `;
   }
   getHtml() {
-    return /* html */`
+    return this.html/* html */`
       <div class="author">
       <div class="grid">
         <div class="wrapper">

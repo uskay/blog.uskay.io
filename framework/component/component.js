@@ -11,39 +11,62 @@ export class Component {
       return new Uint32Array([hash])[0].toString(36);
     };
     this.id = simpleHash(`ID${(new Date()).getTime()}${Math.random()}`)
-    this.meta = new Set();
-    this.css = new Set();
-    this.js = new Set();
+    this.metaSet = new Set();
+    this.cssSet = new Set();
+    this.jsSet = new Set();
   }
   getId() {
     return this.id;
   }
   use(component) {
     component.getMeta().forEach(key => {
-      this.meta.add(key);
+      this.metaSet.add(key);
     })
     component.getCss().forEach(key => {
-      this.css.add(key);
+      this.cssSet.add(key);
     })
     component.getJs().forEach(key => {
-      this.js.add(key);
+      this.jsSet.add(key);
     })
     return component.getHtml();
   }
   getMeta() {
     // override
-    return this.meta;
+    return this.metaSet;
   }
   getCss() {
     // override
-    return this.css;
+    return this.cssSet;
   }
   getJs() {
     // override
-    return this.js;
+    return this.jsSet;
   }
   getHtml() {
     // override
     return '';
+  }
+  toString(strings, ...args) {
+    let value = '';
+    for (let i = 0; i < strings.length; i++) {
+      let arg = '';
+      if (i < args.length) {
+        arg = args[i];
+      }
+      value += strings[i] + arg;
+    }
+    return value;
+  }
+  meta(strings, ...args) {
+    return this.metaSet.add(this.toString(strings, ...args));
+  }
+  js(strings, ...args) {
+    return this.jsSet.add(this.toString(strings, ...args));
+  }
+  css(strings, ...args) {
+    return this.cssSet.add(this.toString(strings, ...args));
+  }
+  html(strings, ...args) {
+    return this.toString(strings, ...args);
   }
 }

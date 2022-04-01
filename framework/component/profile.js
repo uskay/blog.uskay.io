@@ -1,16 +1,16 @@
 import { Component } from './component.js';
 export class Profile extends Component {
   getCss() {
-    return this.css.add(/* css */`
+    return this.css/* css */`
       .profile {
         width: 100%;
         color: #a3a2a2;
         font-size: 0.8em;
     }
-    `);
+    `;
   }
   getHtml() {
-    return /* html */`
+    return this.html/* html */`
       <div class="profile">
         <h2 id="whoami">$whoami</h2>
         <div>

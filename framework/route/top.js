@@ -17,18 +17,20 @@ export class Top extends Route {
     const profile = this.use(new Profile());
     const globalFooter = this.use(new GlobalFooter());
     // compose page
-    this.addRawMeta(/* html */`<title>ウェブボウズ</title>`);
-    this.addRawMeta(/* html */`<meta property="og:title" content="ウェブボウズ" />`);
-    this.addRawMeta(/* html */`<meta property="og:type" content="article" />`);
-    this.addRawMeta(/* html */`<meta property="og:url" content="/" />`);
-    this.addRawMeta(/* html */`<meta property="og:image" content="/img/top.png" />`);
-    this.addRawMeta(/* html */`<meta property="og:site_name" content="ウェブボウズ" />`);
-    this.addRawMeta(/* html */`<meta property="og:description" content="⚡ I LOVE WEB ⚡" />`);
-    this.addRawMeta(/* html */`<meta property="fb:app_id" content="1786319984995103" />`);
-    this.addRawMeta(/* html */`<meta name="twitter:card" content="summary" />`);
-    this.addRawMeta(/* html */`<meta name="twitter:site" content="uskay" />`);
-    this.addRawMeta(/* html */`<meta name="twitter:creator" content="uskay" />`);
-    this.addRawCss(/* css */`
+    this.meta/* html */`
+      <title>ウェブボウズ</title>
+      <meta property="og:title" content="ウェブボウズ" />
+      <meta property="og:type" content="article" />
+      <meta property="og:url" content="/" />
+      <meta property="og:image" content="/img/top.png" />
+      <meta property="og:site_name" content="ウェブボウズ" />
+      <meta property="og:description" content="⚡ I LOVE WEB ⚡" />
+      <meta property="fb:app_id" content="1786319984995103" />
+      <meta name="twitter:card" content="summary" />
+      <meta name="twitter:site" content="uskay" />
+      <meta name="twitter:creator" content="uskay" />
+    `;
+    this.css/* css */`
       .container {
         width: 100%;
         display: flex;
@@ -76,24 +78,24 @@ export class Top extends Route {
       h1 {
         margin-top:30px;
       }
-   `);
-    this.addRawHtml(/* html */`
+   `;
+    this.html/* html */`
       ${globalHeader}
       <div class="container">
         <div class="grid">
           <div class="article-list">
             <h2 style="color: #a3a2a2; font-size: 1.2em">Randomly posted blog</h2>
             ${[...idMuMap.keys()].reverse().map(key => {
-      const mu = idMuMap.get(key);
-      return `<a href="/article/${key}"><div class="article-snippet">${mu}</div></a>`
-    }).join('')
-      }                        
+              const mu = idMuMap.get(key);
+              return `<a href="/article/${key}"><div class="article-snippet">${mu}</div></a>`
+            }).join('')
+            }                        
           </div>
           ${profile}
         </div>
       </div>
       ${globalFooter}
-  `);
+  `;
   }
 }
 
