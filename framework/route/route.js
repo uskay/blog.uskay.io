@@ -27,8 +27,16 @@ export class Route {
     this.meta.add(/* html */`<link href="/img/me-16.png" rel="shortcut icon" />`);
 
     this.css.add(/* css */`
-      @import url('https://fonts.googleapis.com/earlyaccess/nicomoji.css');
-      @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap');
+      @font-face {
+        font-family: 'Nico Moji';
+        font-style: normal;
+        font-weight: 400;
+        src: url(//fonts.gstatic.com/ea/nicomoji/v1/NicoMoji-Regular.eot);
+        src: url(//fonts.gstatic.com/ea/nicomoji/v1/NicoMoji-Regular.eot?#iefix) format('embedded-opentype'),
+            url(//fonts.gstatic.com/ea/nicomoji/v1/NicoMoji-Regular.woff2) format('woff2'),
+            url(//fonts.gstatic.com/ea/nicomoji/v1/NicoMoji-Regular.woff) format('woff'),
+            url(//fonts.gstatic.com/ea/nicomoji/v1/NicoMoji-Regular.ttf) format('truetype');
+      }
       html, body {
         width: 100%;
         height: 100%;

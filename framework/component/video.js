@@ -26,7 +26,7 @@ export class Video extends Component {
   getHtml() {
     return /* html */`
       <div class="video-wrapper" style="padding-top: ${this.height / this.width * 100}%;">
-        <iframe class="video" src=${this.src} frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+        <iframe class="video" loading="lazy" src=${this.src} frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
       </div>
     `;
   }
