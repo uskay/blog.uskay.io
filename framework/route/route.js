@@ -55,7 +55,7 @@ export class Route {
     return /* html */`
       <!DOCTYPE html>
       <html lang='ja'>
-      ${Array.from(this.meta).join(' ')}
+        ${Array.from(this.meta).join(' ')}
       <style>
           ${Array.from(this.css).join(' ')}
       </style>
@@ -78,7 +78,7 @@ export class Route {
           })
         };
         try {
-          eval('var f = (x) => x+1');
+          eval('const f = (x) => x + 1');
         } catch (__e) {
           var __warning = document.createElement('div');
           __warning.style.width = '100%';
