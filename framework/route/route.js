@@ -59,14 +59,36 @@ export class Route {
       <style>
           ${Array.from(this.css).join(' ')}
       </style>
+      <div id='warning'></div>
       ${this.html.join('')}
-      <script>window.addEventListener("DOMContentLoaded",function(e){if(!window.IntersectionObserver)for(var t=document.querySelectorAll(".img-wrapper"),r=0;r<t.length;r++){var n=t[r].querySelector("img");n.setAttribute("src",n.getAttribute("data-src")),n.style.display="block"}});</script>
       <script>
-          ${Array.from(this.js).join(' ')}
+        ${Array.from(this.js).join(' ')}
       </script>
       <!-- For now, let's just add GA directly here -->
       <script defer src="https://www.googletagmanager.com/gtag/js?id=UA-63868653-2"></script>
       <script>window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);}; gtag('js', new Date()); gtag('config', 'UA-63868653-2');</script>
+      <script>
+        if (!window.IntersectionObserver) {
+          window.addEventListener("DOMContentLoaded", function (__evt) {
+            for (var __w = document.querySelectorAll(".img-wrapper"), __i = 0; __i < __w.length; __i++) {
+                var __img = __w[__i].querySelector("img");
+                __img.setAttribute("src", __img.getAttribute("data-src"));
+                __img.style.display = "block";
+            }
+          })
+        };
+        try {
+          eval('var f = (x) => x+1');
+        } catch (__e) {
+          var __warning = document.createElement('div');
+          __warning.style.width = '100%';
+          __warning.style.backgroundColor = '#694CFF';
+          __warning.style.color = 'white';
+          __warning.style.textAlign = 'center';
+          __warning.innerText = 'Your browser not supporting ES6? The site could break. Consider updating to a modern browser ;-)';
+          document.querySelector('#warning').appendChild(__warning);          
+        };
+      </script>
       </html>
       `;
   }

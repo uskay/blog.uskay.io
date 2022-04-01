@@ -36,6 +36,7 @@ export class Article extends Route {
     const meta = getMetaData();
     // compose page
     this.addRawMeta(/* html */`<title>${meta.title} | ウェブボウズ</title>`);
+    this.addRawMeta(/* html */`<link rel="preload" as="image" href="https://blog.uskay.io${meta.image}" />`);
     this.addRawMeta(/* html */`<meta property="og:title" content="${meta.title}" />`);
     this.addRawMeta(/* html */`<meta property="og:type" content="article" />`);
     this.addRawMeta(/* html */`<meta property="og:url" content="/article/${this.articleId}" />`);
