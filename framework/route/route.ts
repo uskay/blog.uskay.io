@@ -1,13 +1,21 @@
+import { Component } from "../component/component";
+
 export class Route {
-  constructor(idMdMap, articleId) {
-    this.metaSet = new Set();
-    this.cssSet = new Set();
-    this.jsSet = new Set();
-    this.htmlList = new Array();
+  metaSet: Set<string>;
+  cssSet: Set<string>;
+  jsSet: Set<string>;
+  htmlList: Array<string>;
+  idMdMap: Map<string, string>;
+  articleId: string;
+  constructor(idMdMap: Map<string, string>, articleId?: string) {
+    this.metaSet = new Set<string>();
+    this.cssSet = new Set<string>();
+    this.jsSet = new Set<string>();
+    this.htmlList = new Array<string>();
     this.idMdMap = idMdMap;
     this.articleId = articleId ? articleId : '';
   }
-  use(component) {
+  use(component: Component): string {
     component.getCss().forEach(key => {
       this.cssSet.add(key);
     })
@@ -19,10 +27,10 @@ export class Route {
     })
     return component.getHtml();
   }
-  compose() {
+  compose(): void {
     // extend
   }
-  build() {
+  build(): string {
     this.meta/* html */`
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <link href="/img/me-16.png" rel="shortcut icon" />
@@ -90,10 +98,10 @@ export class Route {
       </html>
       `;
   }
-  toString(strings, ...args) {
-    let value = '';
-    for (let i = 0; i < strings.length; i++) {
-      let arg = '';
+  toString(strings: TemplateStringsArray, ...args: Array<string>): string {
+    let value: string = '';
+    for (let i:number = 0; i < strings.length; i++) {
+      let arg: string = '';
       if (i < args.length) {
         arg = args[i];
       }
@@ -101,16 +109,16 @@ export class Route {
     }
     return value;
   }
-  meta(strings, ...args) {
+  meta(strings: TemplateStringsArray, ...args: Array<string>) {
     return this.metaSet.add(this.toString(strings, ...args));
   }
-  js(strings, ...args) {
+  js(strings: TemplateStringsArray, ...args: Array<string>) {
     return this.jsSet.add(this.toString(strings, ...args));
   }
-  css(strings, ...args) {
+  css(strings: TemplateStringsArray, ...args: Array<string>) {
     return this.cssSet.add(this.toString(strings, ...args));
   }
-  html(strings, ...args) {
+  html(strings: TemplateStringsArray, ...args: Array<string>) {
     return this.htmlList.push(this.toString(strings, ...args));
   }
 }

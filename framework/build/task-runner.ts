@@ -4,8 +4,8 @@ import { GenerateHtml } from './task/generate-html.js';
 import { OptimizeImage } from './task/optimize-image.js';
 
 export class TaskRunner extends Task {
-  async run() {
-    const target = this.settings.option.get(this.option.target.key);
+  async run(index: number): Promise<any> {
+    const target: string = this.settings.option.get(this.option.target.key);
     this.log('======================');
     this.log('       GEN SITE       ');
     this.log('======================');

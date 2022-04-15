@@ -1,4 +1,4 @@
-import { Build } from './framework/build/build.js';
+import { Build } from './out/framework/build/build.js';
 import * as fs from 'fs';
 
 const settings = JSON.parse(fs.readFileSync('./settings.json'))

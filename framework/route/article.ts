@@ -6,22 +6,26 @@ import { GlobalFooter } from '../component/global-footer.js';
 import { Reco } from '../component/reco.js';
 
 export class Article extends Route {
-  compose() {
-    const md = this.idMdMap.get(this.articleId);
-    const globalHeader = this.use(new GlobalHeader());
-    const markUp = this.use(new MarkDown(md, {route: 'article'}));
-    const profile = this.use(new Profile());
-    const reco = this.use(new Reco(this.idMdMap, this.articleId));
-    const globalFooter = this.use(new GlobalFooter());
-    const getMetaData = _ => {
+  compose(): void {
+    const md: string | undefined = this.idMdMap.get(this.articleId);
+    const globalHeader: string = this.use(new GlobalHeader());
+    if (!md) {
+      return;
+    }
+    const markUp: string = this.use(new MarkDown(md, { route: 'article' }));
+    const profile: string = this.use(new Profile());
+    const reco: string = this.use(new Reco(this.idMdMap, this.articleId));
+    const globalFooter: string = this.use(new GlobalFooter());
+    const getMetaData = (): { image: string, title: string, description: string } => {
       // Format example:
       // ![image](/img/article/001-012.png 2x1)
       // # 🌏 Hello World! Progressive Web-Blog!!
       // ### Web ComponentsでPWAなブログを作ってみた。[Loading編]
-      const meta = {};
+      const meta: { image: string, title: string, description: string }
+        = { image: '', title: '', description: '' };
       md.split('\n').slice(0, 3).forEach(line => {
         if (line.startsWith('!')) {
-          meta.image = line.match(/\((.+\.png)/)[1];
+          meta.image = line.match(/\((.+\.png)/)?.[1] ?? '';
         }
         if (line.startsWith('# ')) {
           meta.title = line.split('# ')[1];
@@ -32,7 +36,7 @@ export class Article extends Route {
       });
       return meta;
     }
-    const meta = getMetaData();
+    const meta: { image: string, title: string, description: string } = getMetaData();
     // compose page
     this.meta/* html */`
       <title>${meta.title} | ウェブボウズ</title>
@@ -48,7 +52,7 @@ export class Article extends Route {
       <meta name="twitter:site" content="@uskay" />
       <meta name="twitter:creator" content="@uskay" />
       <meta name="description" content="${meta.description}">
-    `;    
+    `;
     this.css/* css */`
       .container {
           width: 100%;

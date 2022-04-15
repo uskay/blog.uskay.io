@@ -5,9 +5,9 @@
   "description": "Personal blog static site generator",
   "main": "index.js",
   "scripts": {
-    "build": "node index.js",
-    "build-article": "node index.js --target=articleOnly",
-    "build-image": "node index.js --target=imageOnly",
+    "build": "tsc && node index.js",
+    "build-article": "tsc && node index.js --target=articleOnly",
+    "build-image": "tsc && node index.js --target=imageOnly",
     "dev": "firebase serve -p 5001",
     "prod": "firebase deploy"
   },
@@ -15,5 +15,8 @@
   "license": "Apache 2.0",
   "dependencies": {
     "@squoosh/lib": "^0.4.0"
+  },
+  "devDependencies": {
+    "@types/node": "^17.0.24"
   }
 }

@@ -1,6 +1,6 @@
 import { Component } from './component.js';
 export class Example extends Component {
-  getCss() {
+  getCss(): Set<string> {
     return this.css/* css */`
       .example {
         width: 100%;
@@ -9,14 +9,14 @@ export class Example extends Component {
       }
     `;
   }
-  getJs() {
+  getJs(): Set<string> {
     return this.js/* javascript */`
       window.addEventListener('load', _ => {
         document.querySelector('.example').style = 'block';
       });
     `;
   }
-  getHtml() {
+  getHtml(): string {
     const name = 'uskay';
     return this.html/* html */`
       <div class="example">

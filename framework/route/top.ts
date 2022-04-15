@@ -5,17 +5,19 @@ import { MarkDown } from '../component/markdown.js';
 import { GlobalFooter } from '../component/global-footer.js';
 
 export class Top extends Route {
-  compose() {
-    const globalHeader = this.use(new GlobalHeader());
+  compose(): void {
+    const globalHeader: string = this.use(new GlobalHeader());
     // articleId=MarkUp
-    const idMuMap = new Map();
-    [...this.idMdMap.keys()].forEach(key => {
-      const md = this.idMdMap.get(key);
-      const mu = this.use(new MarkDown(md.split('\n').slice(0, 4).join('\n')));
-      idMuMap.set(key, mu);
+    const idMuMap: Map<string, string> = new Map();
+    [...this.idMdMap.keys()].forEach((key:string) => {
+      const md:string | undefined = this.idMdMap.get(key);
+      if(md) {
+        const mu = this.use(new MarkDown(md.split('\n').slice(0, 4).join('\n')));
+        idMuMap.set(key, mu);
+      }      
     });
-    const profile = this.use(new Profile());
-    const globalFooter = this.use(new GlobalFooter());
+    const profile: string = this.use(new Profile());
+    const globalFooter: string = this.use(new GlobalFooter());
     // compose page
     this.meta/* html */`
       <title>ウェブボウズ</title>

@@ -1,6 +1,6 @@
 import { Component } from './component.js';
 export class GlobalFooter extends Component {
-  getCss() {
+  getCss(): Set<string> {
     return this.css/* css */`
       .global-footer {
         width: 100%;
@@ -15,7 +15,7 @@ export class GlobalFooter extends Component {
       }
     `;
   }
-  getHtml() {
+  getHtml(): string {
     return this.html/* html */`
       <div class="global-footer">
         <div>

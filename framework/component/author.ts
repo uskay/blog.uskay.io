@@ -1,6 +1,6 @@
 import { Component } from './component.js';
 export class Author extends Component {
-  getCss() {
+  getCss(): Set<string> {
     return this.css/* css */`
       .author {
         margin-top: 20px;
@@ -22,7 +22,7 @@ export class Author extends Component {
       }
     `;
   }
-  getHtml() {
+  getHtml(): string {
     return this.html/* html */`
       <div class="author">
       <div class="grid">

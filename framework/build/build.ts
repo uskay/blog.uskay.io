@@ -1,13 +1,14 @@
 import { TaskRunner } from './task-runner.js';
 
 export class Build {
-  constructor(settings) {
+  settings: any;
+  constructor(settings:any) {
     this.settings = settings;
   }
   run() {
     // Generate blog
-    const runner = new TaskRunner(this.settings);
-    runner.run();
+    const runner: TaskRunner = new TaskRunner(this.settings);
+    runner.run(0);
   }
 }
 

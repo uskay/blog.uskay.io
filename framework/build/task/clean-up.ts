@@ -2,10 +2,10 @@ import { Task } from '../task.js';
 import * as fs from 'fs';
 
 export class CleanUp extends Task {
-  run(index) {
-    return new Promise((resolve, reject) => {
-      const target = this.settings.option.get(this.option.target.key);
-      let dir = this.settings.distdir;
+  run(index: number): Promise<any> {
+    return new Promise((resolve) => {
+      const target: string = this.settings.option.get(this.option.target.key);
+      let dir: string = this.settings.distdir;
       if (target && target === this.option.target.value.articleOnly) {
         dir = `${dir}/article`;
       }
@@ -16,7 +16,7 @@ export class CleanUp extends Task {
         fs.rmSync(dir, { recursive: true })
       }
       this.log('CLEAN UP - COMPLETE', index);
-      resolve();
+      resolve('complete');
     });
   }
 };

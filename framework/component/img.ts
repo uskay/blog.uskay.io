@@ -1,6 +1,10 @@
 import { Component } from './component.js';
 export class Image extends Component {
-  constructor(src, width, height, shouldLoadLazy) {
+  src: string;
+  width: number;
+  height: number;
+  shouldLoadLazy: boolean;
+  constructor(src: string, width: number, height: number, shouldLoadLazy: boolean) {
     super();
     this.src = src;
     this.width = width;
@@ -10,7 +14,7 @@ export class Image extends Component {
       this.shouldLoadLazy = false;
     }
   }
-  getCss() {
+  getCss(): Set<string> {
     return this.css/* css */`
       .img-wrapper {
         width: 100%;
@@ -26,9 +30,9 @@ export class Image extends Component {
       }
     `;
   }
-  getHtml() {
+  getHtml(): string {
     return this.html/* html */`
-      <div class="img-wrapper" style="padding-top: ${this.height / this.width * 100}%;">
+      <div class="img-wrapper" style="padding-top: ${(this.height / this.width * 100).toString()}%;">
         ${(_ => {
         if (this.shouldLoadLazy) {
           return `<img data-src="${this.src}" alt="todo-add-alt" loading="lazy" style="display: none">`;
@@ -39,7 +43,7 @@ export class Image extends Component {
       </div>
     `;
   }
-  getJs() {
+  getJs(): Set<string> {
     return this.js/* javascript */`
       const lazyLoadImg = _ => {
         const callback = (entries, observer) => {

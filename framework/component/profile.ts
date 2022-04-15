@@ -1,6 +1,6 @@
 import { Component } from './component.js';
 export class Profile extends Component {
-  getCss() {
+  getCss(): Set<string> {
     return this.css/* css */`
       .profile {
         width: 100%;
@@ -9,7 +9,7 @@ export class Profile extends Component {
     }
     `;
   }
-  getHtml() {
+  getHtml(): string {
     return this.html/* html */`
       <div class="profile">
         <h2 id="whoami">$whoami</h2>

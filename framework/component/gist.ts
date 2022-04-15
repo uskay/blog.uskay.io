@@ -1,10 +1,11 @@
 import { Component } from './component.js';
 export class Gist extends Component {
-  constructor(gistId) {
+  gistId: string;
+  constructor(gistId: string) {
     super();
     this.gistId = gistId;
   }
-  getJs() {
+  getJs(): Set<string> {
     return this.js/* javascript */`
       const loadGist = gistId => {
         const gistElm = document.getElementById('gist-' + gistId);
@@ -37,7 +38,7 @@ export class Gist extends Component {
       };
   `;
   }
-  getHtml() {
+  getHtml(): string {
     return this.html/* html */`
       <div id="gist-${this.gistId}">
         <script>
@@ -53,4 +54,3 @@ export class Gist extends Component {
     `;
   }
 }
-
